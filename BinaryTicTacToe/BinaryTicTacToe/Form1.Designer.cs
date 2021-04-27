@@ -29,37 +29,82 @@ namespace BinaryTicTacToe
         /// </summary>
         private void InitializeComponent()
         {
+            this.loginScreen = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Quit = new System.Windows.Forms.Button();
+            this.playWithComputer = new System.Windows.Forms.Button();
+            this.playWithFriend = new System.Windows.Forms.Button();
+            this.loginScreen.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // loginScreen
+            // 
+            this.loginScreen.BackColor = System.Drawing.Color.Wheat;
+            this.loginScreen.Controls.Add(this.panel1);
+            this.loginScreen.Location = new System.Drawing.Point(0, 1);
+            this.loginScreen.Name = "loginScreen";
+            this.loginScreen.Size = new System.Drawing.Size(2000, 1024);
+            this.loginScreen.TabIndex = 0;
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(12, 23);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.Quit);
+            this.panel1.Controls.Add(this.playWithComputer);
+            this.panel1.Controls.Add(this.playWithFriend);
+            this.panel1.Location = new System.Drawing.Point(550, 220);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(768, 400);
+            this.panel1.Size = new System.Drawing.Size(450, 298);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // Quit
             // 
-            this.button1.Location = new System.Drawing.Point(333, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Quit.BackColor = System.Drawing.Color.LightBlue;
+            this.Quit.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Quit.Location = new System.Drawing.Point(65, 204);
+            this.Quit.Name = "Quit";
+            this.Quit.Size = new System.Drawing.Size(318, 65);
+            this.Quit.TabIndex = 8;
+            this.Quit.Text = "Затвори игра";
+            this.Quit.UseVisualStyleBackColor = false;
+            this.Quit.Click += new System.EventHandler(this.Quit_Click);
+            // 
+            // playWithComputer
+            // 
+            this.playWithComputer.BackColor = System.Drawing.Color.LightBlue;
+            this.playWithComputer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playWithComputer.Location = new System.Drawing.Point(65, 115);
+            this.playWithComputer.Name = "playWithComputer";
+            this.playWithComputer.Size = new System.Drawing.Size(318, 65);
+            this.playWithComputer.TabIndex = 7;
+            this.playWithComputer.Text = "Играј со компјутер";
+            this.playWithComputer.UseVisualStyleBackColor = false;
+            // 
+            // playWithFriend
+            // 
+            this.playWithFriend.BackColor = System.Drawing.Color.LightBlue;
+            this.playWithFriend.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playWithFriend.Location = new System.Drawing.Point(65, 26);
+            this.playWithFriend.Name = "playWithFriend";
+            this.playWithFriend.Size = new System.Drawing.Size(318, 65);
+            this.playWithFriend.TabIndex = 6;
+            this.playWithFriend.Text = "Играј со пријател";
+            this.playWithFriend.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1280, 788);
+            this.Controls.Add(this.loginScreen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.loginScreen.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -67,8 +112,11 @@ namespace BinaryTicTacToe
 
         #endregion
 
+        private System.Windows.Forms.Panel loginScreen;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Quit;
+        private System.Windows.Forms.Button playWithComputer;
+        private System.Windows.Forms.Button playWithFriend;
     }
 }
 

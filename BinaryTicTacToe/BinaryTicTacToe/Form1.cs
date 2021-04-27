@@ -17,9 +17,14 @@ namespace BinaryTicTacToe
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Quit_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
+            if (MessageBox.Show("Дали си сигурен дека сакаш да ја затвориш играт?", "Излези од игра", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
+
+       
     }
 }
