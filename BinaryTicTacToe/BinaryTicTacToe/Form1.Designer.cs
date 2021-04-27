@@ -55,9 +55,9 @@ namespace BinaryTicTacToe
             this.panel1.Controls.Add(this.Quit);
             this.panel1.Controls.Add(this.playWithComputer);
             this.panel1.Controls.Add(this.playWithFriend);
-            this.panel1.Location = new System.Drawing.Point(550, 220);
+            this.panel1.Location = new System.Drawing.Point(160, 149);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 298);
+            this.panel1.Size = new System.Drawing.Size(451, 288);
             this.panel1.TabIndex = 0;
             // 
             // Quit
@@ -98,12 +98,11 @@ namespace BinaryTicTacToe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 788);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.loginScreen);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.loginScreen.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
