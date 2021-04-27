@@ -17,14 +17,12 @@ namespace BinaryTicTacToe
             InitializeComponent();
         }
 
-        private void Quit_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Дали си сигурен дека сакаш да ја затвориш играт?", "Излези од игра", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to quit the game?", "Quit the game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 this.Close();
             }
         }
-
-     
     }
 }
