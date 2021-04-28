@@ -16,6 +16,15 @@ namespace BinaryTicTacToe
         public Form1()
         {
             InitializeComponent();
+            playBackgroundMusic();
+        }
+
+        //code for adding background music
+        public void playBackgroundMusic()
+        {
+            SoundPlayer player = new
+            SoundPlayer(BinaryTicTacToe.Properties.Resources.background_music);
+            player.PlayLooping();
         }
 
         //when clicking "Exit" the game should exit
