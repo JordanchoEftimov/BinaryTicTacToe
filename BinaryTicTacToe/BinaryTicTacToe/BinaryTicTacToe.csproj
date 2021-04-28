@@ -88,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\background_music.wav" />
+    <None Include="Resources\background-music.wav" />
     <None Include="Resources\title.png" />
     <None Include="Resources\coollogo_com-25524695.png" />
   </ItemGroup>

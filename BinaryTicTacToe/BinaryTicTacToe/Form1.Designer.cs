@@ -41,17 +41,16 @@ namespace BinaryTicTacToe
             // 
             // loginScreen
             // 
-            this.loginScreen.BackColor = System.Drawing.Color.White;
-            this.loginScreen.BackgroundImage = global::BinaryTicTacToe.Properties.Resources.background;
+            this.loginScreen.BackColor = System.Drawing.Color.Transparent;
             this.loginScreen.Controls.Add(this.panel1);
             this.loginScreen.Controls.Add(this.btnExit);
             this.loginScreen.Controls.Add(this.btnScoreboard);
             this.loginScreen.Controls.Add(this.btnPlayPC);
             this.loginScreen.Controls.Add(this.btnPlayWithFriend);
-            this.loginScreen.Location = new System.Drawing.Point(-2, -7);
+            this.loginScreen.Location = new System.Drawing.Point(-3, 51);
             this.loginScreen.Margin = new System.Windows.Forms.Padding(4);
             this.loginScreen.Name = "loginScreen";
-            this.loginScreen.Size = new System.Drawing.Size(2669, 1268);
+            this.loginScreen.Size = new System.Drawing.Size(2670, 1210);
             this.loginScreen.TabIndex = 0;
             // 
             // panel1
@@ -113,11 +112,12 @@ namespace BinaryTicTacToe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::BinaryTicTacToe.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1262, 863);
             this.Controls.Add(this.loginScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "BinaryTicTacToe";
             this.loginScreen.ResumeLayout(false);
