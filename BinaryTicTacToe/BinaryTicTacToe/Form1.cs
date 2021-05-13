@@ -48,132 +48,6 @@ namespace BinaryTicTacToe
             base.WndProc(ref m);
         }
 
-        private void field1_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field1.Text = "1";
-            }
-            else
-            {
-                field1.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field1.Enabled = false;
-        }
-
-        private void field2_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field2.Text = "1";
-            }
-            else
-            {
-                field2.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field2.Enabled = false;
-        }
-
-        private void field3_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field3.Text = "1";
-            }
-            else
-            {
-                field3.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field3.Enabled = false;
-        }
-
-        private void field4_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field4.Text = "1";
-            }
-            else
-            {
-                field4.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field4.Enabled = false;
-        }
-
-        private void field5_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field5.Text = "1";
-            }
-            else
-            {
-                field5.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field5.Enabled = false;
-        }
-
-        private void field6_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field6.Text = "1";
-            }
-            else
-            {
-                field6.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field6.Enabled = false;
-        }
-
-        private void field7_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field7.Text = "1";
-            }
-            else
-            {
-                field7.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field7.Enabled = false;
-        }
-
-        private void field8_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field8.Text = "1";
-            }
-            else
-            {
-                field8.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field8.Enabled = false;
-        }
-
-        private void field9_Click(object sender, EventArgs e)
-        {
-            if (is1or0turn == true)
-            {
-                field9.Text = "1";
-            }
-            else
-            {
-                field9.Text = "0";
-            }
-            is1or0turn = !is1or0turn;
-            field9.Enabled = false;
-        }
-
         private void resetFields()
         {
             field1.Text = "";
@@ -228,6 +102,21 @@ namespace BinaryTicTacToe
                 lblPlayer1Score.Text = "0";
                 lblPlayer2Score.Text = "0";
             }
+        }
+
+        private void field_Click(object sender, EventArgs e)
+        {
+            Button field = (Button)sender;
+            if (is1or0turn == true)
+            {
+                field.Text = "1";
+            }
+            else
+            {
+                field.Text = "0";
+            }
+            is1or0turn = !is1or0turn;
+            field.Enabled = false;
         }
     }
 }

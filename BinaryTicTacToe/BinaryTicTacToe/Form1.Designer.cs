@@ -38,6 +38,9 @@ namespace BinaryTicTacToe
             this.loginScreen = new System.Windows.Forms.Panel();
             this.pnlGameWindow = new System.Windows.Forms.Panel();
             this.pnlGameOptions = new System.Windows.Forms.Panel();
+            this.btnNewGame = new System.Windows.Forms.Button();
+            this.btnResetRound = new System.Windows.Forms.Button();
+            this.btnExitGame = new System.Windows.Forms.Button();
             this.pnlGameButtons = new System.Windows.Forms.Panel();
             this.field9 = new System.Windows.Forms.Button();
             this.field8 = new System.Windows.Forms.Button();
@@ -49,13 +52,10 @@ namespace BinaryTicTacToe
             this.field2 = new System.Windows.Forms.Button();
             this.field1 = new System.Windows.Forms.Button();
             this.pnlGameScore = new System.Windows.Forms.Panel();
-            this.btnExitGame = new System.Windows.Forms.Button();
-            this.btnResetRound = new System.Windows.Forms.Button();
-            this.btnNewGame = new System.Windows.Forms.Button();
-            this.lblPlayerName1 = new System.Windows.Forms.Label();
-            this.lblPlayerName2 = new System.Windows.Forms.Label();
-            this.lblPlayer1Score = new System.Windows.Forms.Label();
             this.lblPlayer2Score = new System.Windows.Forms.Label();
+            this.lblPlayer1Score = new System.Windows.Forms.Label();
+            this.lblPlayerName2 = new System.Windows.Forms.Label();
+            this.lblPlayerName1 = new System.Windows.Forms.Label();
             this.loginScreen.SuspendLayout();
             this.pnlGameWindow.SuspendLayout();
             this.pnlGameOptions.SuspendLayout();
@@ -159,6 +159,45 @@ namespace BinaryTicTacToe
             this.pnlGameOptions.Size = new System.Drawing.Size(207, 441);
             this.pnlGameOptions.TabIndex = 2;
             // 
+            // btnNewGame
+            // 
+            this.btnNewGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnNewGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.Location = new System.Drawing.Point(16, 122);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(165, 46);
+            this.btnNewGame.TabIndex = 103;
+            this.btnNewGame.TabStop = false;
+            this.btnNewGame.Text = "New Game";
+            this.btnNewGame.UseVisualStyleBackColor = false;
+            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
+            // 
+            // btnResetRound
+            // 
+            this.btnResetRound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnResetRound.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetRound.Location = new System.Drawing.Point(16, 197);
+            this.btnResetRound.Name = "btnResetRound";
+            this.btnResetRound.Size = new System.Drawing.Size(165, 46);
+            this.btnResetRound.TabIndex = 102;
+            this.btnResetRound.TabStop = false;
+            this.btnResetRound.Text = "Reset";
+            this.btnResetRound.UseVisualStyleBackColor = false;
+            this.btnResetRound.Click += new System.EventHandler(this.btnResetRound_Click);
+            // 
+            // btnExitGame
+            // 
+            this.btnExitGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnExitGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExitGame.Location = new System.Drawing.Point(16, 269);
+            this.btnExitGame.Name = "btnExitGame";
+            this.btnExitGame.Size = new System.Drawing.Size(167, 46);
+            this.btnExitGame.TabIndex = 101;
+            this.btnExitGame.TabStop = false;
+            this.btnExitGame.Text = "Exit Game";
+            this.btnExitGame.UseVisualStyleBackColor = false;
+            this.btnExitGame.Click += new System.EventHandler(this.btnExitGame_Click);
+            // 
             // pnlGameButtons
             // 
             this.pnlGameButtons.Controls.Add(this.field9);
@@ -185,7 +224,7 @@ namespace BinaryTicTacToe
             this.field9.TabIndex = 100;
             this.field9.TabStop = false;
             this.field9.UseVisualStyleBackColor = false;
-            this.field9.Click += new System.EventHandler(this.field9_Click);
+            this.field9.Click += new System.EventHandler(this.field_Click);
             // 
             // field8
             // 
@@ -197,7 +236,7 @@ namespace BinaryTicTacToe
             this.field8.TabIndex = 100;
             this.field8.TabStop = false;
             this.field8.UseVisualStyleBackColor = false;
-            this.field8.Click += new System.EventHandler(this.field8_Click);
+            this.field8.Click += new System.EventHandler(this.field_Click);
             // 
             // field7
             // 
@@ -209,7 +248,7 @@ namespace BinaryTicTacToe
             this.field7.TabIndex = 100;
             this.field7.TabStop = false;
             this.field7.UseVisualStyleBackColor = false;
-            this.field7.Click += new System.EventHandler(this.field7_Click);
+            this.field7.Click += new System.EventHandler(this.field_Click);
             // 
             // field6
             // 
@@ -221,7 +260,7 @@ namespace BinaryTicTacToe
             this.field6.TabIndex = 100;
             this.field6.TabStop = false;
             this.field6.UseVisualStyleBackColor = false;
-            this.field6.Click += new System.EventHandler(this.field6_Click);
+            this.field6.Click += new System.EventHandler(this.field_Click);
             // 
             // field5
             // 
@@ -233,7 +272,7 @@ namespace BinaryTicTacToe
             this.field5.TabIndex = 100;
             this.field5.TabStop = false;
             this.field5.UseVisualStyleBackColor = false;
-            this.field5.Click += new System.EventHandler(this.field5_Click);
+            this.field5.Click += new System.EventHandler(this.field_Click);
             // 
             // field4
             // 
@@ -245,7 +284,7 @@ namespace BinaryTicTacToe
             this.field4.TabIndex = 100;
             this.field4.TabStop = false;
             this.field4.UseVisualStyleBackColor = false;
-            this.field4.Click += new System.EventHandler(this.field4_Click);
+            this.field4.Click += new System.EventHandler(this.field_Click);
             // 
             // field3
             // 
@@ -257,7 +296,7 @@ namespace BinaryTicTacToe
             this.field3.TabIndex = 100;
             this.field3.TabStop = false;
             this.field3.UseVisualStyleBackColor = false;
-            this.field3.Click += new System.EventHandler(this.field3_Click);
+            this.field3.Click += new System.EventHandler(this.field_Click);
             // 
             // field2
             // 
@@ -269,7 +308,7 @@ namespace BinaryTicTacToe
             this.field2.TabIndex = 100;
             this.field2.TabStop = false;
             this.field2.UseVisualStyleBackColor = false;
-            this.field2.Click += new System.EventHandler(this.field2_Click);
+            this.field2.Click += new System.EventHandler(this.field_Click);
             // 
             // field1
             // 
@@ -281,7 +320,7 @@ namespace BinaryTicTacToe
             this.field1.TabIndex = 100;
             this.field1.TabStop = false;
             this.field1.UseVisualStyleBackColor = false;
-            this.field1.Click += new System.EventHandler(this.field1_Click);
+            this.field1.Click += new System.EventHandler(this.field_Click);
             // 
             // pnlGameScore
             // 
@@ -294,66 +333,17 @@ namespace BinaryTicTacToe
             this.pnlGameScore.Size = new System.Drawing.Size(742, 94);
             this.pnlGameScore.TabIndex = 0;
             // 
-            // btnExitGame
+            // lblPlayer2Score
             // 
-            this.btnExitGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnExitGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitGame.Location = new System.Drawing.Point(16, 269);
-            this.btnExitGame.Name = "btnExitGame";
-            this.btnExitGame.Size = new System.Drawing.Size(167, 46);
-            this.btnExitGame.TabIndex = 101;
-            this.btnExitGame.TabStop = false;
-            this.btnExitGame.Text = "Exit Game";
-            this.btnExitGame.UseVisualStyleBackColor = false;
-            this.btnExitGame.Click += new System.EventHandler(this.btnExitGame_Click);
-            // 
-            // btnResetRound
-            // 
-            this.btnResetRound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnResetRound.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetRound.Location = new System.Drawing.Point(16, 197);
-            this.btnResetRound.Name = "btnResetRound";
-            this.btnResetRound.Size = new System.Drawing.Size(165, 46);
-            this.btnResetRound.TabIndex = 102;
-            this.btnResetRound.TabStop = false;
-            this.btnResetRound.Text = "Reset";
-            this.btnResetRound.UseVisualStyleBackColor = false;
-            this.btnResetRound.Click += new System.EventHandler(this.btnResetRound_Click);
-            // 
-            // btnNewGame
-            // 
-            this.btnNewGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnNewGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(16, 122);
-            this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(165, 46);
-            this.btnNewGame.TabIndex = 103;
-            this.btnNewGame.TabStop = false;
-            this.btnNewGame.Text = "New Game";
-            this.btnNewGame.UseVisualStyleBackColor = false;
-            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
-            // 
-            // lblPlayerName1
-            // 
-            this.lblPlayerName1.AutoSize = true;
-            this.lblPlayerName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayerName1.Location = new System.Drawing.Point(59, 33);
-            this.lblPlayerName1.Name = "lblPlayerName1";
-            this.lblPlayerName1.Size = new System.Drawing.Size(233, 39);
-            this.lblPlayerName1.TabIndex = 0;
-            this.lblPlayerName1.Text = "PlayerName 1";
-            // 
-            // lblPlayerName2
-            // 
-            this.lblPlayerName2.AutoSize = true;
-            this.lblPlayerName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayerName2.Location = new System.Drawing.Point(506, 33);
-            this.lblPlayerName2.Name = "lblPlayerName2";
-            this.lblPlayerName2.Size = new System.Drawing.Size(233, 39);
-            this.lblPlayerName2.TabIndex = 1;
-            this.lblPlayerName2.Text = "PlayerName 2";
+            this.lblPlayer2Score.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblPlayer2Score.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPlayer2Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer2Score.Location = new System.Drawing.Point(420, 33);
+            this.lblPlayer2Score.Name = "lblPlayer2Score";
+            this.lblPlayer2Score.Size = new System.Drawing.Size(80, 39);
+            this.lblPlayer2Score.TabIndex = 3;
+            this.lblPlayer2Score.Text = "0";
+            this.lblPlayer2Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPlayer1Score
             // 
@@ -367,17 +357,27 @@ namespace BinaryTicTacToe
             this.lblPlayer1Score.Text = "0";
             this.lblPlayer1Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblPlayer2Score
+            // lblPlayerName2
             // 
-            this.lblPlayer2Score.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayer2Score.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblPlayer2Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer2Score.Location = new System.Drawing.Point(420, 33);
-            this.lblPlayer2Score.Name = "lblPlayer2Score";
-            this.lblPlayer2Score.Size = new System.Drawing.Size(80, 39);
-            this.lblPlayer2Score.TabIndex = 3;
-            this.lblPlayer2Score.Text = "0";
-            this.lblPlayer2Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPlayerName2.AutoSize = true;
+            this.lblPlayerName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblPlayerName2.Location = new System.Drawing.Point(506, 33);
+            this.lblPlayerName2.Name = "lblPlayerName2";
+            this.lblPlayerName2.Size = new System.Drawing.Size(233, 39);
+            this.lblPlayerName2.TabIndex = 1;
+            this.lblPlayerName2.Text = "PlayerName 2";
+            // 
+            // lblPlayerName1
+            // 
+            this.lblPlayerName1.AutoSize = true;
+            this.lblPlayerName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblPlayerName1.Location = new System.Drawing.Point(59, 33);
+            this.lblPlayerName1.Name = "lblPlayerName1";
+            this.lblPlayerName1.Size = new System.Drawing.Size(233, 39);
+            this.lblPlayerName1.TabIndex = 0;
+            this.lblPlayerName1.Text = "PlayerName 1";
             // 
             // Form1
             // 
