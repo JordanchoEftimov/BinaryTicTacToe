@@ -97,6 +97,9 @@ namespace BinaryTicTacToe
                 lblPlayerName2.Text = form.player2Name;
             }
             pnlGameWindow.Visible = true;
+            resetFields();
+            lblPlayer1Score.Text = "0";
+            lblPlayer2Score.Text = "0";
         }
 
         private void btnExitGame_Click(object sender, EventArgs e)
