@@ -18,7 +18,7 @@ namespace BinaryTicTacToe
         public void playBackgroundMusic()
         {
             SoundPlayer player = new
-            SoundPlayer(BinaryTicTacToe.Properties.Resources.background_music);
+            SoundPlayer(Properties.Resources.background_music);
             player.PlayLooping();
         }
 
@@ -64,6 +64,15 @@ namespace BinaryTicTacToe
             field8.Enabled = true;
             field9.Text = "";
             field9.Enabled = true;
+            field1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            field9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
         }
 
         private void disableFields()
@@ -81,6 +90,12 @@ namespace BinaryTicTacToe
 
         private void btnPlayWithFriend_Click(object sender, EventArgs e)
         {
+            PlayerNames form = new PlayerNames();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                lblPlayerName1.Text = form.player1Name;
+                lblPlayerName2.Text = form.player2Name;
+            }
             pnlGameWindow.Visible = true;
         }
 
@@ -90,6 +105,8 @@ namespace BinaryTicTacToe
             {
                 is1or0turn = true;
                 resetFields();
+                lblPlayer1Score.Text = "0";
+                lblPlayer2Score.Text = "0";
                 pnlGameWindow.Visible = false;
             }
         }
@@ -108,6 +125,12 @@ namespace BinaryTicTacToe
                 resetFields();
                 lblPlayer1Score.Text = "0";
                 lblPlayer2Score.Text = "0";
+                PlayerNames form = new PlayerNames();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    lblPlayerName1.Text = form.player1Name;
+                    lblPlayerName2.Text = form.player2Name;
+                }
             }
         }
 
@@ -128,25 +151,70 @@ namespace BinaryTicTacToe
         {
             string winner = "none";
             if (field1.Text == field2.Text && field2.Text == field3.Text && !field1.Enabled)
+            {
                 winner = field1.Text;
+                field1.BackColor = System.Drawing.Color.LimeGreen;
+                field2.BackColor = System.Drawing.Color.LimeGreen;
+                field3.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field4.Text == field5.Text && field5.Text == field6.Text && !field6.Enabled)
+            {
                 winner = field4.Text;
+                field4.BackColor = System.Drawing.Color.LimeGreen;
+                field5.BackColor = System.Drawing.Color.LimeGreen;
+                field6.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field7.Text == field8.Text && field8.Text == field9.Text && !field9.Enabled)
+            {
                 winner = field7.Text;
+                field7.BackColor = System.Drawing.Color.LimeGreen;
+                field8.BackColor = System.Drawing.Color.LimeGreen;
+                field9.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field1.Text == field4.Text && field4.Text == field7.Text && !field7.Enabled)
+            {
                 winner = field1.Text;
+                field1.BackColor = System.Drawing.Color.LimeGreen;
+                field4.BackColor = System.Drawing.Color.LimeGreen;
+                field7.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field2.Text == field5.Text && field5.Text == field8.Text && !field8.Enabled)
+            {
                 winner = field2.Text;
+                field2.BackColor = System.Drawing.Color.LimeGreen;
+                field5.BackColor = System.Drawing.Color.LimeGreen;
+                field8.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field3.Text == field6.Text && field6.Text == field9.Text && !field9.Enabled)
+            {
                 winner = field3.Text;
+                field3.BackColor = System.Drawing.Color.LimeGreen;
+                field6.BackColor = System.Drawing.Color.LimeGreen;
+                field9.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field1.Text == field5.Text && field5.Text == field9.Text && !field1.Enabled)
+            {
                 winner = field1.Text;
+                field1.BackColor = System.Drawing.Color.LimeGreen;
+                field5.BackColor = System.Drawing.Color.LimeGreen;
+                field9.BackColor = System.Drawing.Color.LimeGreen;
+            }
             else if (field3.Text == field5.Text && field5.Text == field7.Text && !field3.Enabled)
+            {
                 winner = field3.Text;
+                field3.BackColor = System.Drawing.Color.LimeGreen;
+                field5.BackColor = System.Drawing.Color.LimeGreen;
+                field7.BackColor = System.Drawing.Color.LimeGreen;
+            }
             if (!winner.Equals("none"))
             {
+                string player = "";
                 disableFields();
-                MessageBox.Show("Congratulations! Player " + winner + " wins!");
+                if (winner == "1")
+                    player = lblPlayerName1.Text;
+                else
+                    player = lblPlayerName2.Text;
+                MessageBox.Show("Congratulations! " + player + " wins!", "Win!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 turnsTaken = 0;
                 if (winner == "1")
                 {
@@ -163,7 +231,7 @@ namespace BinaryTicTacToe
             }
             if (turnsTaken == 9)
             {
-                MessageBox.Show("The game ended in a draw!");
+                MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 turnsTaken = 0;
             }
         }

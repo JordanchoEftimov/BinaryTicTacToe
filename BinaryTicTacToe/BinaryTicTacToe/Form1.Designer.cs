@@ -364,20 +364,23 @@ namespace BinaryTicTacToe
             this.lblPlayerName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblPlayerName2.Location = new System.Drawing.Point(506, 33);
             this.lblPlayerName2.Name = "lblPlayerName2";
-            this.lblPlayerName2.Size = new System.Drawing.Size(233, 39);
+            this.lblPlayerName2.Size = new System.Drawing.Size(36, 39);
             this.lblPlayerName2.TabIndex = 1;
-            this.lblPlayerName2.Text = "PlayerName 2";
+            this.lblPlayerName2.Text = "2";
+            this.lblPlayerName2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPlayerName1
             // 
-            this.lblPlayerName1.AutoSize = true;
+            this.lblPlayerName1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPlayerName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayerName1.Location = new System.Drawing.Point(59, 33);
+            this.lblPlayerName1.Location = new System.Drawing.Point(51, 33);
             this.lblPlayerName1.Name = "lblPlayerName1";
-            this.lblPlayerName1.Size = new System.Drawing.Size(233, 39);
+            this.lblPlayerName1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblPlayerName1.Size = new System.Drawing.Size(254, 39);
             this.lblPlayerName1.TabIndex = 0;
-            this.lblPlayerName1.Text = "PlayerName 1";
+            this.lblPlayerName1.Text = "1";
+            this.lblPlayerName1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // Form1
             // 
