@@ -73,5 +73,10 @@ namespace BinaryTicTacToe
             else
                 MessageBox.Show("Please insert your name in the following fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }

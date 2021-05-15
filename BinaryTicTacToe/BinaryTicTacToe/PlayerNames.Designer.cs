@@ -37,6 +37,7 @@ namespace BinaryTicTacToe
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@ namespace BinaryTicTacToe
             // btnOK
             // 
             this.btnOK.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnOK.Location = new System.Drawing.Point(160, 171);
+            this.btnOK.Location = new System.Drawing.Point(74, 171);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 33);
             this.btnOK.TabIndex = 2;
@@ -100,12 +101,24 @@ namespace BinaryTicTacToe
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCancel.Location = new System.Drawing.Point(249, 171);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 33);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // PlayerNames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(396, 216);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -129,5 +142,6 @@ namespace BinaryTicTacToe
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

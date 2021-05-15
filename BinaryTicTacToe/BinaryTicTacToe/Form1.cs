@@ -95,11 +95,15 @@ namespace BinaryTicTacToe
             {
                 lblPlayerName1.Text = form.player1Name;
                 lblPlayerName2.Text = form.player2Name;
+                pnlGameWindow.Visible = true;
+                resetFields();
+                lblPlayer1Score.Text = "0";
+                lblPlayer2Score.Text = "0";
             }
-            pnlGameWindow.Visible = true;
-            resetFields();
-            lblPlayer1Score.Text = "0";
-            lblPlayer2Score.Text = "0";
+            else
+            {
+                form.Close();
+            }
         }
 
         private void btnExitGame_Click(object sender, EventArgs e)
@@ -124,15 +128,19 @@ namespace BinaryTicTacToe
         {
             if (MessageBox.Show("Are you sure you want to play a new game?", "Play a new game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                is1or0turn = true;
-                resetFields();
-                lblPlayer1Score.Text = "0";
-                lblPlayer2Score.Text = "0";
                 PlayerNames form = new PlayerNames();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     lblPlayerName1.Text = form.player1Name;
                     lblPlayerName2.Text = form.player2Name;
+                    is1or0turn = true;
+                    resetFields();
+                    lblPlayer1Score.Text = "0";
+                    lblPlayer2Score.Text = "0";
+                }
+                else
+                {
+                    form.Close();
                 }
             }
         }
