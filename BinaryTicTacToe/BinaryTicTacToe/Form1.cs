@@ -7,13 +7,33 @@ namespace BinaryTicTacToe
     public partial class Form1 : Form
     {
         bool is1or0turn = true;
+        byte botDifficulty = 0;
+        bool botActive = false;
         int turnsTaken = 0;
+        int[] plays;
+        Button[] gameButtons;
         public Form1()
         {
             InitializeComponent();
             playBackgroundMusic();
+            plays = new int[9];
+            gameButtons = new Button[9];
+            int i = 8;
+            foreach (Control c in pnlGameButtons.Controls)
+            {
+                if (c is Button)
+                {
+                    Button b = c as Button;
+                    gameButtons[i--] = b; 
+                }
+            }
         }
-
+        private void initializePlays()
+        {
+            for (int i = 0; i < 9; i++) {
+                plays[i] = -1;
+            }
+        }
         //code for adding background music
         public void playBackgroundMusic()
         {
@@ -46,46 +66,21 @@ namespace BinaryTicTacToe
         // Field Reset
         private void resetFields()
         {
-            field1.Text = "";
-            field1.Enabled = true;
-            field2.Text = "";
-            field2.Enabled = true;
-            field3.Text = "";
-            field3.Enabled = true;
-            field4.Text = "";
-            field4.Enabled = true;
-            field5.Text = "";
-            field5.Enabled = true;
-            field6.Text = "";
-            field6.Enabled = true;
-            field7.Text = "";
-            field7.Enabled = true;
-            field8.Text = "";
-            field8.Enabled = true;
-            field9.Text = "";
-            field9.Enabled = true;
-            field1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            initializePlays();
+            foreach (Button b in gameButtons)
+            {
+                b.Text = "";
+                b.Enabled = true;
+                b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            }
         }
         // Field Disable
         private void disableFields()
         {
-            field1.Enabled = false;
-            field2.Enabled = false;
-            field3.Enabled = false;
-            field4.Enabled = false;
-            field5.Enabled = false;
-            field6.Enabled = false;
-            field7.Enabled = false;
-            field8.Enabled = false;
-            field9.Enabled = false;
+            foreach (Button b in gameButtons)
+            {
+                b.Enabled = false;
+            }
         }
         // Play with a friend show
         private void btnPlayWithFriend_Click(object sender, EventArgs e)
@@ -96,6 +91,7 @@ namespace BinaryTicTacToe
                 lblPlayerName1.Text = form.player1Name;
                 lblPlayerName2.Text = form.player2Name;
                 pnlGameWindow.Visible = true;
+                pnlGameScore.Visible = true;
                 resetFields();
                 lblPlayer1Score.Text = "0";
                 lblPlayer2Score.Text = "0";
@@ -123,6 +119,7 @@ namespace BinaryTicTacToe
         private void btnResetRound_Click(object sender, EventArgs e)
         {
             is1or0turn = true;
+            turnsTaken = 0;
             resetFields();
         }
 
@@ -137,6 +134,7 @@ namespace BinaryTicTacToe
                     lblPlayerName1.Text = form.player1Name;
                     lblPlayerName2.Text = form.player2Name;
                     is1or0turn = true;
+                    turnsTaken = 0;
                     resetFields();
                     lblPlayer1Score.Text = "0";
                     lblPlayer2Score.Text = "0";
@@ -151,17 +149,42 @@ namespace BinaryTicTacToe
         private void field_Click(object sender, EventArgs e)
         {
             Button field = (Button)sender;
+            int index = int.Parse(field.Name[5] + "") - 1;
             if (is1or0turn == true)
+            {
+                plays[index] = 1;
                 field.Text = "1";
+            }
             else
+            {
+                plays[index] = 0;
                 field.Text = "0";
+            }
             is1or0turn = !is1or0turn;
             field.Enabled = false;
             turnsTaken++;
-            checkWinner();
+            if (checkWinner().Equals("none") && botActive)
+            {
+                int ind = -1;
+                switch(botDifficulty)
+                {
+                    case 0: ind = easyMove();
+                        break;
+                    case 1: ind = mediumMove();
+                        break;
+                    case 2: ind = hardMove();
+                        break;
+                }
+                plays[ind] = 0;
+                gameButtons[ind].Enabled = false;
+                gameButtons[ind].Text = "0";
+                turnsTaken++;
+                is1or0turn = !is1or0turn;
+                checkWinner();
+            }
         }
         // Winner Check
-        private void checkWinner()
+        private string checkWinner()
         {
             string winner = "none";
             if (field1.Text == field2.Text && field2.Text == field3.Text && !field1.Enabled)
@@ -246,8 +269,74 @@ namespace BinaryTicTacToe
             if (turnsTaken == 9)
             {
                 MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                winner = "draw";
                 turnsTaken = 0;
             }
+            return winner;
         }
+
+
+
+
+        // Bot Section
+        private int easyMove()
+        {
+            Random rand = new Random();
+            while (true)
+            {
+                int ind = rand.Next(9);
+                if (plays[ind] == -1)
+                {
+                    return ind;
+                }
+            }
+        }
+        private int mediumMove()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                if (plays[i] == -1)
+                {
+                    if (checkWinner().Equals("none"))
+                    {
+                        plays[i] = -1;
+                    } else
+                    {
+                        plays[i] = -1;
+                        return i;
+                    }
+                }
+            }
+            return easyMove();
+        }
+        private int hardMove()
+        {
+            // MinMax Algorithm
+
+            return 0;
+        }
+        private void btnPlayPC_Click(object sender, EventArgs e)
+        {
+            Difficulty form = new Difficulty();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                pnlGameWindow.Visible = true;
+                pnlGameScore.Visible = false;
+                resetFields();
+                botDifficulty = form.diff;
+                botActive = true;
+            }
+            else
+            {
+                form.Close();
+            }
+        }
+
+        private void btnScoreboard_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
     }
 }
