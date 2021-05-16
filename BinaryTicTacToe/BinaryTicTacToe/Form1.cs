@@ -43,7 +43,7 @@ namespace BinaryTicTacToe
 
             base.WndProc(ref m);
         }
-
+        // Field Reset
         private void resetFields()
         {
             field1.Text = "";
@@ -74,7 +74,7 @@ namespace BinaryTicTacToe
             field8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             field9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
         }
-
+        // Field Disable
         private void disableFields()
         {
             field1.Enabled = false;
@@ -87,7 +87,7 @@ namespace BinaryTicTacToe
             field8.Enabled = false;
             field9.Enabled = false;
         }
-
+        // Play with a friend show
         private void btnPlayWithFriend_Click(object sender, EventArgs e)
         {
             PlayerNames form = new PlayerNames();
@@ -105,7 +105,7 @@ namespace BinaryTicTacToe
                 form.Close();
             }
         }
-
+        // Close game Code
         private void btnExitGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to quit this gameplay?", "Quit the gameplay!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -118,12 +118,15 @@ namespace BinaryTicTacToe
             }
         }
 
+
+        //Reset Button game logic
         private void btnResetRound_Click(object sender, EventArgs e)
         {
             is1or0turn = true;
             resetFields();
         }
 
+        // Start new game
         private void btnNewGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to play a new game?", "Play a new game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -157,7 +160,7 @@ namespace BinaryTicTacToe
             turnsTaken++;
             checkWinner();
         }
-
+        // Winner Check
         private void checkWinner()
         {
             string winner = "none";

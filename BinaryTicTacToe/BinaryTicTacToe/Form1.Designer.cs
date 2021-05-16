@@ -67,9 +67,10 @@ namespace BinaryTicTacToe
             // 
             this.btnPlayWithFriend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnPlayWithFriend.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlayWithFriend.Location = new System.Drawing.Point(87, 313);
+            this.btnPlayWithFriend.Location = new System.Drawing.Point(65, 254);
+            this.btnPlayWithFriend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPlayWithFriend.Name = "btnPlayWithFriend";
-            this.btnPlayWithFriend.Size = new System.Drawing.Size(256, 55);
+            this.btnPlayWithFriend.Size = new System.Drawing.Size(192, 45);
             this.btnPlayWithFriend.TabIndex = 100;
             this.btnPlayWithFriend.TabStop = false;
             this.btnPlayWithFriend.Text = "Play with a friend";
@@ -80,9 +81,10 @@ namespace BinaryTicTacToe
             // 
             this.btnPlayPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnPlayPC.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlayPC.Location = new System.Drawing.Point(87, 422);
+            this.btnPlayPC.Location = new System.Drawing.Point(65, 343);
+            this.btnPlayPC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPlayPC.Name = "btnPlayPC";
-            this.btnPlayPC.Size = new System.Drawing.Size(256, 55);
+            this.btnPlayPC.Size = new System.Drawing.Size(192, 45);
             this.btnPlayPC.TabIndex = 100;
             this.btnPlayPC.TabStop = false;
             this.btnPlayPC.Text = "Play with a bot";
@@ -92,9 +94,10 @@ namespace BinaryTicTacToe
             // 
             this.btnScoreboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnScoreboard.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScoreboard.Location = new System.Drawing.Point(87, 536);
+            this.btnScoreboard.Location = new System.Drawing.Point(65, 436);
+            this.btnScoreboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnScoreboard.Name = "btnScoreboard";
-            this.btnScoreboard.Size = new System.Drawing.Size(256, 55);
+            this.btnScoreboard.Size = new System.Drawing.Size(192, 45);
             this.btnScoreboard.TabIndex = 100;
             this.btnScoreboard.TabStop = false;
             this.btnScoreboard.Text = "Scoreboard";
@@ -104,9 +107,10 @@ namespace BinaryTicTacToe
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnExit.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(87, 655);
+            this.btnExit.Location = new System.Drawing.Point(65, 532);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(256, 55);
+            this.btnExit.Size = new System.Drawing.Size(192, 45);
             this.btnExit.TabIndex = 100;
             this.btnExit.TabStop = false;
             this.btnExit.Text = "Exit";
@@ -118,9 +122,10 @@ namespace BinaryTicTacToe
             this.pnlTitle.BackColor = System.Drawing.Color.Transparent;
             this.pnlTitle.BackgroundImage = global::BinaryTicTacToe.Properties.Resources.title;
             this.pnlTitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlTitle.Location = new System.Drawing.Point(206, 71);
+            this.pnlTitle.Location = new System.Drawing.Point(154, 58);
+            this.pnlTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(807, 94);
+            this.pnlTitle.Size = new System.Drawing.Size(605, 76);
             this.pnlTitle.TabIndex = 4;
             // 
             // loginScreen
@@ -132,10 +137,9 @@ namespace BinaryTicTacToe
             this.loginScreen.Controls.Add(this.btnScoreboard);
             this.loginScreen.Controls.Add(this.btnPlayPC);
             this.loginScreen.Controls.Add(this.btnPlayWithFriend);
-            this.loginScreen.Location = new System.Drawing.Point(-3, 51);
-            this.loginScreen.Margin = new System.Windows.Forms.Padding(4);
+            this.loginScreen.Location = new System.Drawing.Point(-2, 41);
             this.loginScreen.Name = "loginScreen";
-            this.loginScreen.Size = new System.Drawing.Size(2670, 1210);
+            this.loginScreen.Size = new System.Drawing.Size(2002, 983);
             this.loginScreen.TabIndex = 0;
             // 
             // pnlGameWindow
@@ -143,9 +147,10 @@ namespace BinaryTicTacToe
             this.pnlGameWindow.Controls.Add(this.pnlGameOptions);
             this.pnlGameWindow.Controls.Add(this.pnlGameButtons);
             this.pnlGameWindow.Controls.Add(this.pnlGameScore);
-            this.pnlGameWindow.Location = new System.Drawing.Point(494, 186);
+            this.pnlGameWindow.Location = new System.Drawing.Point(370, 151);
+            this.pnlGameWindow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlGameWindow.Name = "pnlGameWindow";
-            this.pnlGameWindow.Size = new System.Drawing.Size(748, 547);
+            this.pnlGameWindow.Size = new System.Drawing.Size(561, 444);
             this.pnlGameWindow.TabIndex = 5;
             this.pnlGameWindow.Visible = false;
             // 
@@ -154,18 +159,20 @@ namespace BinaryTicTacToe
             this.pnlGameOptions.Controls.Add(this.btnNewGame);
             this.pnlGameOptions.Controls.Add(this.btnResetRound);
             this.pnlGameOptions.Controls.Add(this.btnExitGame);
-            this.pnlGameOptions.Location = new System.Drawing.Point(538, 103);
+            this.pnlGameOptions.Location = new System.Drawing.Point(404, 84);
+            this.pnlGameOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlGameOptions.Name = "pnlGameOptions";
-            this.pnlGameOptions.Size = new System.Drawing.Size(207, 441);
+            this.pnlGameOptions.Size = new System.Drawing.Size(155, 358);
             this.pnlGameOptions.TabIndex = 2;
             // 
             // btnNewGame
             // 
             this.btnNewGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnNewGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(16, 122);
+            this.btnNewGame.Location = new System.Drawing.Point(12, 99);
+            this.btnNewGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(165, 46);
+            this.btnNewGame.Size = new System.Drawing.Size(124, 37);
             this.btnNewGame.TabIndex = 103;
             this.btnNewGame.TabStop = false;
             this.btnNewGame.Text = "New Game";
@@ -176,9 +183,10 @@ namespace BinaryTicTacToe
             // 
             this.btnResetRound.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnResetRound.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetRound.Location = new System.Drawing.Point(16, 197);
+            this.btnResetRound.Location = new System.Drawing.Point(12, 160);
+            this.btnResetRound.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnResetRound.Name = "btnResetRound";
-            this.btnResetRound.Size = new System.Drawing.Size(165, 46);
+            this.btnResetRound.Size = new System.Drawing.Size(124, 37);
             this.btnResetRound.TabIndex = 102;
             this.btnResetRound.TabStop = false;
             this.btnResetRound.Text = "Reset";
@@ -189,9 +197,10 @@ namespace BinaryTicTacToe
             // 
             this.btnExitGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnExitGame.Font = new System.Drawing.Font("Franklin Gothic Medium", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitGame.Location = new System.Drawing.Point(16, 269);
+            this.btnExitGame.Location = new System.Drawing.Point(12, 219);
+            this.btnExitGame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExitGame.Name = "btnExitGame";
-            this.btnExitGame.Size = new System.Drawing.Size(167, 46);
+            this.btnExitGame.Size = new System.Drawing.Size(125, 37);
             this.btnExitGame.TabIndex = 101;
             this.btnExitGame.TabStop = false;
             this.btnExitGame.Text = "Exit Game";
@@ -209,18 +218,20 @@ namespace BinaryTicTacToe
             this.pnlGameButtons.Controls.Add(this.field3);
             this.pnlGameButtons.Controls.Add(this.field2);
             this.pnlGameButtons.Controls.Add(this.field1);
-            this.pnlGameButtons.Location = new System.Drawing.Point(3, 103);
+            this.pnlGameButtons.Location = new System.Drawing.Point(2, 84);
+            this.pnlGameButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlGameButtons.Name = "pnlGameButtons";
-            this.pnlGameButtons.Size = new System.Drawing.Size(529, 441);
+            this.pnlGameButtons.Size = new System.Drawing.Size(397, 358);
             this.pnlGameButtons.TabIndex = 1;
             // 
             // field9
             // 
             this.field9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field9.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field9.Location = new System.Drawing.Point(367, 308);
+            this.field9.Location = new System.Drawing.Point(275, 250);
+            this.field9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field9.Name = "field9";
-            this.field9.Size = new System.Drawing.Size(140, 130);
+            this.field9.Size = new System.Drawing.Size(105, 106);
             this.field9.TabIndex = 100;
             this.field9.TabStop = false;
             this.field9.UseVisualStyleBackColor = false;
@@ -230,9 +241,10 @@ namespace BinaryTicTacToe
             // 
             this.field8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field8.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field8.Location = new System.Drawing.Point(189, 308);
+            this.field8.Location = new System.Drawing.Point(142, 250);
+            this.field8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field8.Name = "field8";
-            this.field8.Size = new System.Drawing.Size(140, 130);
+            this.field8.Size = new System.Drawing.Size(105, 106);
             this.field8.TabIndex = 100;
             this.field8.TabStop = false;
             this.field8.UseVisualStyleBackColor = false;
@@ -242,9 +254,10 @@ namespace BinaryTicTacToe
             // 
             this.field7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field7.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field7.Location = new System.Drawing.Point(12, 308);
+            this.field7.Location = new System.Drawing.Point(9, 250);
+            this.field7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field7.Name = "field7";
-            this.field7.Size = new System.Drawing.Size(140, 130);
+            this.field7.Size = new System.Drawing.Size(105, 106);
             this.field7.TabIndex = 100;
             this.field7.TabStop = false;
             this.field7.UseVisualStyleBackColor = false;
@@ -254,9 +267,10 @@ namespace BinaryTicTacToe
             // 
             this.field6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field6.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field6.Location = new System.Drawing.Point(367, 161);
+            this.field6.Location = new System.Drawing.Point(275, 131);
+            this.field6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field6.Name = "field6";
-            this.field6.Size = new System.Drawing.Size(140, 130);
+            this.field6.Size = new System.Drawing.Size(105, 106);
             this.field6.TabIndex = 100;
             this.field6.TabStop = false;
             this.field6.UseVisualStyleBackColor = false;
@@ -266,9 +280,10 @@ namespace BinaryTicTacToe
             // 
             this.field5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field5.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field5.Location = new System.Drawing.Point(189, 161);
+            this.field5.Location = new System.Drawing.Point(142, 131);
+            this.field5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field5.Name = "field5";
-            this.field5.Size = new System.Drawing.Size(140, 130);
+            this.field5.Size = new System.Drawing.Size(105, 106);
             this.field5.TabIndex = 100;
             this.field5.TabStop = false;
             this.field5.UseVisualStyleBackColor = false;
@@ -278,9 +293,10 @@ namespace BinaryTicTacToe
             // 
             this.field4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field4.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field4.Location = new System.Drawing.Point(12, 161);
+            this.field4.Location = new System.Drawing.Point(9, 131);
+            this.field4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field4.Name = "field4";
-            this.field4.Size = new System.Drawing.Size(140, 130);
+            this.field4.Size = new System.Drawing.Size(105, 106);
             this.field4.TabIndex = 100;
             this.field4.TabStop = false;
             this.field4.UseVisualStyleBackColor = false;
@@ -290,9 +306,10 @@ namespace BinaryTicTacToe
             // 
             this.field3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field3.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field3.Location = new System.Drawing.Point(367, 19);
+            this.field3.Location = new System.Drawing.Point(275, 15);
+            this.field3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field3.Name = "field3";
-            this.field3.Size = new System.Drawing.Size(140, 130);
+            this.field3.Size = new System.Drawing.Size(105, 106);
             this.field3.TabIndex = 100;
             this.field3.TabStop = false;
             this.field3.UseVisualStyleBackColor = false;
@@ -302,9 +319,10 @@ namespace BinaryTicTacToe
             // 
             this.field2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field2.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field2.Location = new System.Drawing.Point(189, 19);
+            this.field2.Location = new System.Drawing.Point(142, 15);
+            this.field2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field2.Name = "field2";
-            this.field2.Size = new System.Drawing.Size(140, 130);
+            this.field2.Size = new System.Drawing.Size(105, 106);
             this.field2.TabIndex = 100;
             this.field2.TabStop = false;
             this.field2.UseVisualStyleBackColor = false;
@@ -314,9 +332,10 @@ namespace BinaryTicTacToe
             // 
             this.field1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.field1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.field1.Location = new System.Drawing.Point(12, 19);
+            this.field1.Location = new System.Drawing.Point(9, 15);
+            this.field1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.field1.Name = "field1";
-            this.field1.Size = new System.Drawing.Size(140, 130);
+            this.field1.Size = new System.Drawing.Size(105, 106);
             this.field1.TabIndex = 100;
             this.field1.TabStop = false;
             this.field1.UseVisualStyleBackColor = false;
@@ -328,9 +347,10 @@ namespace BinaryTicTacToe
             this.pnlGameScore.Controls.Add(this.lblPlayer1Score);
             this.pnlGameScore.Controls.Add(this.lblPlayerName2);
             this.pnlGameScore.Controls.Add(this.lblPlayerName1);
-            this.pnlGameScore.Location = new System.Drawing.Point(3, 3);
+            this.pnlGameScore.Location = new System.Drawing.Point(2, 2);
+            this.pnlGameScore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlGameScore.Name = "pnlGameScore";
-            this.pnlGameScore.Size = new System.Drawing.Size(742, 94);
+            this.pnlGameScore.Size = new System.Drawing.Size(556, 76);
             this.pnlGameScore.TabIndex = 0;
             // 
             // lblPlayer2Score
@@ -338,9 +358,10 @@ namespace BinaryTicTacToe
             this.lblPlayer2Score.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblPlayer2Score.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPlayer2Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer2Score.Location = new System.Drawing.Point(420, 33);
+            this.lblPlayer2Score.Location = new System.Drawing.Point(315, 27);
+            this.lblPlayer2Score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer2Score.Name = "lblPlayer2Score";
-            this.lblPlayer2Score.Size = new System.Drawing.Size(80, 39);
+            this.lblPlayer2Score.Size = new System.Drawing.Size(60, 32);
             this.lblPlayer2Score.TabIndex = 3;
             this.lblPlayer2Score.Text = "0";
             this.lblPlayer2Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -350,9 +371,10 @@ namespace BinaryTicTacToe
             this.lblPlayer1Score.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblPlayer1Score.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPlayer1Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1Score.Location = new System.Drawing.Point(311, 33);
+            this.lblPlayer1Score.Location = new System.Drawing.Point(233, 27);
+            this.lblPlayer1Score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer1Score.Name = "lblPlayer1Score";
-            this.lblPlayer1Score.Size = new System.Drawing.Size(80, 39);
+            this.lblPlayer1Score.Size = new System.Drawing.Size(60, 32);
             this.lblPlayer1Score.TabIndex = 2;
             this.lblPlayer1Score.Text = "0";
             this.lblPlayer1Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -362,9 +384,10 @@ namespace BinaryTicTacToe
             this.lblPlayerName2.AutoSize = true;
             this.lblPlayerName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayerName2.Location = new System.Drawing.Point(506, 33);
+            this.lblPlayerName2.Location = new System.Drawing.Point(380, 27);
+            this.lblPlayerName2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerName2.Name = "lblPlayerName2";
-            this.lblPlayerName2.Size = new System.Drawing.Size(36, 39);
+            this.lblPlayerName2.Size = new System.Drawing.Size(29, 31);
             this.lblPlayerName2.TabIndex = 1;
             this.lblPlayerName2.Text = "2";
             this.lblPlayerName2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -374,24 +397,24 @@ namespace BinaryTicTacToe
             this.lblPlayerName1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPlayerName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblPlayerName1.Location = new System.Drawing.Point(51, 33);
+            this.lblPlayerName1.Location = new System.Drawing.Point(38, 27);
+            this.lblPlayerName1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerName1.Name = "lblPlayerName1";
             this.lblPlayerName1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPlayerName1.Size = new System.Drawing.Size(254, 39);
+            this.lblPlayerName1.Size = new System.Drawing.Size(190, 32);
             this.lblPlayerName1.TabIndex = 0;
             this.lblPlayerName1.Text = "1";
             this.lblPlayerName1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BinaryTicTacToe.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(1262, 863);
+            this.ClientSize = new System.Drawing.Size(946, 640);
             this.Controls.Add(this.loginScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "BinaryTicTacToe";
             this.loginScreen.ResumeLayout(false);
