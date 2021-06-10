@@ -27,7 +27,7 @@ namespace BinaryTicTacToe
         /// <returns>Total point of a player</returns>
         public int GetPoints()
         {
-            return Wins * 3 + Draws;
+            return Wins * 3 + Draws - 2 * Looses;
         }
         /// <summary>
         ///     Get number of played games;
