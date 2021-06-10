@@ -132,6 +132,11 @@ namespace BinaryTicTacToe
         {
             if (MessageBox.Show("Are you sure you want to quit this gameplay?", "Quit the gameplay!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                if (!Bot.botActive)
+                {
+                    Scoreboard.AddStats(Game.P1);
+                    Scoreboard.AddStats(Game.P2);
+                }
                 ResetFields();
                 pnlGameWindow.Visible = false;
             }
@@ -302,7 +307,8 @@ namespace BinaryTicTacToe
         /// </summary>
         private void BtnScoreboard_Click(object sender, EventArgs e)
         {
-            /// TODO
+            Score scoreboard = new Score();
+            scoreboard.Show();
         }
 
 
