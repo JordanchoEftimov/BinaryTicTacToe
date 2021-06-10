@@ -6,30 +6,52 @@ namespace BinaryTicTacToe
 {
     public partial class Form1 : Form
     {
-        bool is1or0turn = true;
-        int turnsTaken = 0;
+        private Game Game { get; set; }
+        private Button[] GameButtons { get; set; }
+        /// <summary>
+        /// Starts the music.
+        /// Intialize the game and the buttons!
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
-            playBackgroundMusic();
+            PlayBackgroundMusic();
+            Game = new Game();
+            GameButtons = new Button[9];
+            int i = 8;
+            foreach (Control c in pnlGameButtons.Controls)
+            {
+                if (c is Button)
+                {
+                    Button b = c as Button;
+                    GameButtons[i--] = b; 
+                }
+            }
         }
-
-        //code for adding background music
-        public void playBackgroundMusic()
+        
+        /// <summary>
+        ///     Code for adding background music
+        /// </summary>
+        public void PlayBackgroundMusic()
         {
             SoundPlayer player = new
             SoundPlayer(Properties.Resources.background_music);
             player.PlayLooping();
         }
 
-        //when clicking "Exit" the game should exit
-        private void btnExit_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     When clicking "Exit" the game should exit
+        /// </summary>
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to quit the game?", "Quit the game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 this.Close();
         }
 
-        //function to enable form to be movable without any form border
+        /// <summary>
+        ///     Function to enable form to be movable without any form border
+        /// </summary>
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -43,211 +65,246 @@ namespace BinaryTicTacToe
 
             base.WndProc(ref m);
         }
-        // Field Reset
-        private void resetFields()
+        
+        /// <summary>
+        ///     Restarts the game and fields!
+        /// </summary>
+        private void ResetFields()
         {
-            field1.Text = "";
-            field1.Enabled = true;
-            field2.Text = "";
-            field2.Enabled = true;
-            field3.Text = "";
-            field3.Enabled = true;
-            field4.Text = "";
-            field4.Enabled = true;
-            field5.Text = "";
-            field5.Enabled = true;
-            field6.Text = "";
-            field6.Enabled = true;
-            field7.Text = "";
-            field7.Enabled = true;
-            field8.Text = "";
-            field8.Enabled = true;
-            field9.Text = "";
-            field9.Enabled = true;
-            field1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            field9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            Game.ResetGame();
+            ShowScore();
+            foreach (Button b in GameButtons)
+            {
+                b.Text = "";
+                b.Enabled = true;
+                b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            }
         }
-        // Field Disable
-        private void disableFields()
+
+        /// <summary>
+        ///     Disable fields on game end!
+        /// </summary>
+        private void DisableFields()
         {
-            field1.Enabled = false;
-            field2.Enabled = false;
-            field3.Enabled = false;
-            field4.Enabled = false;
-            field5.Enabled = false;
-            field6.Enabled = false;
-            field7.Enabled = false;
-            field8.Enabled = false;
-            field9.Enabled = false;
+            foreach (Button b in GameButtons)
+            {
+                b.Enabled = false;
+            }
         }
-        // Play with a friend show
-        private void btnPlayWithFriend_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     Show updated scores!
+        /// </summary>
+        private void ShowScore()
         {
-            PlayerNames form = new PlayerNames();
+            lblPlayerName1.Text = Game.P1.Name;
+            lblPlayerName2.Text = Game.P2.Name;
+            lblPlayer1Score.Text = Game.P1.Wins.ToString();
+            lblPlayer2Score.Text = Game.P2.Wins.ToString();
+        }
+
+        /// <summary>
+        ///     Play with a friend actions!
+        /// </summary>
+        private void BtnPlayWithFriend_Click(object sender, EventArgs e)
+        {
+            PlayerNames form = new PlayerNames(Game.P1, Game.P2);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                lblPlayerName1.Text = form.player1Name;
-                lblPlayerName2.Text = form.player2Name;
+                Game.P1 = new Player(form.player1Name);
+                Game.P2 = new Player(form.player2Name);
                 pnlGameWindow.Visible = true;
-                resetFields();
-                lblPlayer1Score.Text = "0";
-                lblPlayer2Score.Text = "0";
+                pnlGameScore.Visible = true;
+                ShowScore();
+                ResetFields();
+                Bot.botActive = false;
             }
             else
             {
                 form.Close();
             }
         }
-        // Close game Code
-        private void btnExitGame_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     GamePlay exit button action!
+        /// </summary>
+        private void BtnExitGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to quit this gameplay?", "Quit the gameplay!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                is1or0turn = true;
-                resetFields();
-                lblPlayer1Score.Text = "0";
-                lblPlayer2Score.Text = "0";
+                ResetFields();
                 pnlGameWindow.Visible = false;
             }
         }
 
-
-        //Reset Button game logic
-        private void btnResetRound_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Game Reset button action!
+        /// </summary>
+        private void BtnResetRound_Click(object sender, EventArgs e)
         {
-            is1or0turn = true;
-            resetFields();
+            ResetFields();
         }
 
-        // Start new game
-        private void btnNewGame_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     GamePlay New Game button action depending on which one is active!
+        /// </summary>
+        private void BtnNewGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to play a new game?", "Play a new game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                PlayerNames form = new PlayerNames();
-                if (form.ShowDialog() == DialogResult.OK)
+                if (Bot.botActive)
                 {
-                    lblPlayerName1.Text = form.player1Name;
-                    lblPlayerName2.Text = form.player2Name;
-                    is1or0turn = true;
-                    resetFields();
-                    lblPlayer1Score.Text = "0";
-                    lblPlayer2Score.Text = "0";
+                    BtnPlayPC_Click(sender, e);
+                } else
+                {
+                    BtnPlayWithFriend_Click(sender, e);
+                }
+            }
+        }
+        
+
+        /// <summary>
+        ///     It updates the clicked cell and marks it as played!
+        /// </summary>
+        private void Field_Click(object sender, EventArgs e)
+        {
+            // Field and Game Update start
+            Button field = (Button) sender;
+            int index = int.Parse(field.Name[5] + "") - 1;
+            if (Game.Is1or0turn == true)
+            {
+                Game.Plays[index] = 1;
+                field.Text = "1";
+            }
+            else
+            {
+                Game.Plays[index] = 0;
+                field.Text = "0";
+            }
+            
+            field.Enabled = false;
+            Game.TurnsTaken++;
+            // Field and Game Update end
+
+            String result = WinCheck(index); // Check winner and disable fileds if end
+            Game.Is1or0turn = !Game.Is1or0turn; // Change the turn to next player
+            /*
+             *  The next part is used to make imediately a bot move if the game didn't finished 
+             *  with the last move of the player (depending on the selected mode at the begining).
+             */
+            if (Bot.botActive && result.Equals("None") && Game.TurnsTaken != 9)
+            {
+                index = Game.BotMove();
+                GameButtons[index].Text = "0";
+                GameButtons[index].Enabled = false;
+
+                WinCheck(index);
+
+                Game.Is1or0turn = !Game.Is1or0turn;
+            }
+        }
+        /// <summary>
+        ///     Determines the state of the game with the help of CheckWin function from 
+        ///     the helper class WinnerCheck!
+        /// </summary>
+        /// <param name="index">The index of last clicked field</param>
+        /// <returns>None if no one won and Win:win fields indexes if theres a win</returns>
+        private String WinCheck(int index)
+        {
+            String result = WinnerCheck.CheckWin(Game.Plays, index, Game.Is1or0turn ? 1 : 0);
+            if (result.StartsWith("Win"))
+            {
+                ColorWin(result.Substring(4));
+                if (Game.Is1or0turn)
+                {
+                    EndMessage(Bot.botActive ? "User" : Game.P1.Name);
+                    if (!Bot.botActive)
+                    {
+                        Game.P1.Wins++;
+                        Game.P2.Looses++;
+                    }
                 }
                 else
                 {
-                    form.Close();
+                    EndMessage(Bot.botActive ? "Bot" : Game.P2.Name);
+                    if (!Bot.botActive)
+                    {
+                        Game.P2.Wins++;
+                        Game.P1.Looses++;
+                    }
                 }
+                DisableFields();
+                ShowScore();
+            }
+            else if (Game.TurnsTaken == 9) // If 9 moves are made then its a Draw
+            {
+                EndMessage("Draw");
+                DisableFields();
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///     In case of win tis function helps to color the fields of the win!
+        /// </summary>
+        /// <param name="pattern">The field indexs seperated by comma.</param>
+        private void ColorWin(String pattern)
+        {
+            String[] pieces = pattern.Split(',');
+            for (int i = 0; i < 3; i++)
+            {
+                GameButtons[Convert.ToInt32(pieces[i])].BackColor = System.Drawing.Color.LimeGreen;
             }
         }
 
-        private void field_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Shows a message box when the game ends.
+        /// </summary>
+        /// <param name="player">The name of the player who won or Draw in case of draw.</param>
+        private void EndMessage(String player)
         {
-            Button field = (Button)sender;
-            if (is1or0turn == true)
-                field.Text = "1";
-            else
-                field.Text = "0";
-            is1or0turn = !is1or0turn;
-            field.Enabled = false;
-            turnsTaken++;
-            checkWinner();
-        }
-        // Winner Check
-        private void checkWinner()
-        {
-            string winner = "none";
-            if (field1.Text == field2.Text && field2.Text == field3.Text && !field1.Enabled)
+            if (player.Equals("Draw"))
             {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field2.BackColor = System.Drawing.Color.LimeGreen;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field4.Text == field5.Text && field5.Text == field6.Text && !field6.Enabled)
+                DialogResult = MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!Bot.botActive)
+                {
+                    Game.P1.Draws++;
+                    Game.P2.Draws++;
+                }
+            } else
             {
-                winner = field4.Text;
-                field4.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field6.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field7.Text == field8.Text && field8.Text == field9.Text && !field9.Enabled)
-            {
-                winner = field7.Text;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-                field8.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field1.Text == field4.Text && field4.Text == field7.Text && !field7.Enabled)
-            {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field4.BackColor = System.Drawing.Color.LimeGreen;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field2.Text == field5.Text && field5.Text == field8.Text && !field8.Enabled)
-            {
-                winner = field2.Text;
-                field2.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field8.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field3.Text == field6.Text && field6.Text == field9.Text && !field9.Enabled)
-            {
-                winner = field3.Text;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-                field6.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field1.Text == field5.Text && field5.Text == field9.Text && !field1.Enabled)
-            {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field3.Text == field5.Text && field5.Text == field7.Text && !field3.Enabled)
-            {
-                winner = field3.Text;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            if (!winner.Equals("none"))
-            {
-                string player = "";
-                disableFields();
-                if (winner == "1")
-                    player = lblPlayerName1.Text;
-                else
-                    player = lblPlayerName2.Text;
                 MessageBox.Show("Congratulations! " + player + " wins!", "Win!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                turnsTaken = 0;
-                if (winner == "1")
-                {
-                    int score = Int32.Parse(lblPlayer1Score.Text);
-                    score++;
-                    lblPlayer1Score.Text = score.ToString();
-                }
-                else
-                {
-                    int score = Int32.Parse(lblPlayer2Score.Text);
-                    score++;
-                    lblPlayer2Score.Text = score.ToString();
-                }
-            }
-            if (turnsTaken == 9)
-            {
-                MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                turnsTaken = 0;
             }
         }
+      
+        /// <summary>
+        ///     Opens a form to pick the difficulty of the bot!
+        /// </summary>
+        private void BtnPlayPC_Click(object sender, EventArgs e)
+        {
+            Difficulty form = new Difficulty();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                pnlGameWindow.Visible = true;
+                pnlGameScore.Visible = false;
+                ResetFields();
+                Bot.botActive = true;
+                Bot.botDifficulty = form.diff;
+            }
+            else
+            {
+                form.Close();
+            }
+        }
+        /// <summary>
+        ///     Opens a form where the scoreboard of players will be shown!
+        /// </summary>
+        private void BtnScoreboard_Click(object sender, EventArgs e)
+        {
+            /// TODO
+        }
+
+
     }
 }

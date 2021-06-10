@@ -44,27 +44,30 @@ namespace BinaryTicTacToe
             // lblPlayer1Name
             // 
             this.lblPlayer1Name.AutoSize = true;
-            this.lblPlayer1Name.Location = new System.Drawing.Point(33, 65);
+            this.lblPlayer1Name.Location = new System.Drawing.Point(25, 53);
+            this.lblPlayer1Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer1Name.Name = "lblPlayer1Name";
-            this.lblPlayer1Name.Size = new System.Drawing.Size(101, 17);
+            this.lblPlayer1Name.Size = new System.Drawing.Size(76, 13);
             this.lblPlayer1Name.TabIndex = 0;
             this.lblPlayer1Name.Text = "Player 1 Name";
             // 
             // lblPlayer2Name
             // 
             this.lblPlayer2Name.AutoSize = true;
-            this.lblPlayer2Name.Location = new System.Drawing.Point(33, 109);
+            this.lblPlayer2Name.Location = new System.Drawing.Point(25, 89);
+            this.lblPlayer2Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayer2Name.Name = "lblPlayer2Name";
-            this.lblPlayer2Name.Size = new System.Drawing.Size(101, 17);
+            this.lblPlayer2Name.Size = new System.Drawing.Size(76, 13);
             this.lblPlayer2Name.TabIndex = 1;
             this.lblPlayer2Name.Text = "Player 2 Name";
             // 
             // btnOK
             // 
             this.btnOK.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnOK.Location = new System.Drawing.Point(74, 171);
+            this.btnOK.Location = new System.Drawing.Point(56, 139);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 33);
+            this.btnOK.Size = new System.Drawing.Size(56, 27);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
@@ -72,17 +75,19 @@ namespace BinaryTicTacToe
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(178, 65);
+            this.textBox1.Location = new System.Drawing.Point(134, 53);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 22);
+            this.textBox1.Size = new System.Drawing.Size(130, 20);
             this.textBox1.TabIndex = 3;
             this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(178, 106);
+            this.textBox2.Location = new System.Drawing.Point(134, 86);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 22);
+            this.textBox2.Size = new System.Drawing.Size(130, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
             // 
@@ -90,9 +95,10 @@ namespace BinaryTicTacToe
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(56, 9);
+            this.lblTitle.Location = new System.Drawing.Point(42, 7);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(285, 29);
+            this.lblTitle.Size = new System.Drawing.Size(226, 24);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "INSERT YOUR NAMES";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -104,9 +110,10 @@ namespace BinaryTicTacToe
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnCancel.Location = new System.Drawing.Point(249, 171);
+            this.btnCancel.Location = new System.Drawing.Point(187, 139);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 33);
+            this.btnCancel.Size = new System.Drawing.Size(56, 27);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -114,10 +121,10 @@ namespace BinaryTicTacToe
             // 
             // PlayerNames
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(396, 216);
+            this.ClientSize = new System.Drawing.Size(297, 176);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.textBox2);
@@ -126,7 +133,9 @@ namespace BinaryTicTacToe
             this.Controls.Add(this.lblPlayer2Name);
             this.Controls.Add(this.lblPlayer1Name);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PlayerNames";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
