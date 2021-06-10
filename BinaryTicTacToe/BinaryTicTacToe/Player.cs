@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BinaryTicTacToe
 {
-    public class Player
+    [Serializable]
+    public class Player : IComparable<Player>
     {
         public String Name { get; }
         public int Wins { get; set; }
@@ -36,6 +37,28 @@ namespace BinaryTicTacToe
         public int TotalGames()
         {
             return Wins + Draws + Looses;
+        }
+
+        /// <summary>
+        ///     Adds the new wins, looses and draws to a player.
+        /// </summary>
+        /// <param name="player">The object that holds the stats that should be added!</param>
+
+        public void UpdateStats(Player player)
+        {
+            this.Wins += player.Wins;
+            this.Looses += player.Looses;
+            this.Draws += player.Draws;
+        }
+
+        /// <summary>
+        ///     Implementation of IComperable interface to sort the players descending by totalPoints
+        /// </summary>
+        /// <param name="other">The player with who we compare!</param>
+        public int CompareTo(Player other)
+        {
+            // To be modified
+            return other.GetPoints().CompareTo(this.GetPoints());
         }
     }
 }
