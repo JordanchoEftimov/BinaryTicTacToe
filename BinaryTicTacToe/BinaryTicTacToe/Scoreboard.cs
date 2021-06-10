@@ -8,26 +8,23 @@ namespace BinaryTicTacToe
 {
     public static class Scoreboard
     {
-        public static SortedSet<Player> players = new SortedSet<Player>();
-        public static List<Player> listPlayer = players.ToList<Player>();
+        public static List<Player> listPlayer = new List<Player>();
 
-        public static void UpdateList()
-        {
-            listPlayer = players.ToList();
-        }
         public static void AddStats(Player player)
         {
-            if (players.Contains(player))
+            bool found = false;
+            foreach (Player p in listPlayer)
             {
-                players.TryGetValue(player, out Player p);
-                players.Remove(player);
-                p.UpdateStats(player);
-                players.Add(p);
-            } else
-            {
-                players.Add(player);
+                if (p.Equals(player))
+                {
+                    found = true;
+                    p.UpdateStats(player);
+                    break;
+                }
             }
-            UpdateList();
+            if (!found)
+                listPlayer.Add(player);
+            listPlayer.Sort();
         }
     }
 }

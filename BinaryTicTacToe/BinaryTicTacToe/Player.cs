@@ -60,5 +60,20 @@ namespace BinaryTicTacToe
             // To be modified
             return other.GetPoints().CompareTo(this.GetPoints());
         }
+
+        public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Player p = (Player)obj;
+                return (p.Name == this.Name);
+            }
+        }
+
     }
 }

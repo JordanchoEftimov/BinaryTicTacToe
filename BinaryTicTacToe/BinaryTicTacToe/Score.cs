@@ -25,12 +25,26 @@ namespace BinaryTicTacToe
 
         private void BindingSource1_CurrentChanged(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             // The desired page has changed, so fetch the page of records using the "Current" offset 
             int offset = (int)bindingSource1.Current;
             List<Player> players = new List<Player>();
             for (int i = offset; i < offset + pageSize && i < TotalRecords; i++)
-                players.Add(Scoreboard.listPlayer[i]);
-            dataGridView1.DataSource = players;
+            {
+                int rowId = dataGridView1.Rows.Add();
+                DataGridViewRow row = dataGridView1.Rows[rowId];
+                Player p = Scoreboard.listPlayer[i];
+                row.Cells["Place"].Value = i + 1;
+                row.Cells["PName"].Value = p.Name;
+                row.Cells["Wins"].Value = p.Wins;
+                row.Cells["Draws"].Value = p.Draws;
+                row.Cells["Looses"].Value = p.Looses;
+                row.Cells["Points"].Value = p.GetPoints();
+
+
+            }
+            //players.Add(Scoreboard.listPlayer[i]);
+            //dataGridView1.DataSource = players;
         }
 
         class PageOffsetList : System.ComponentModel.IListSource
