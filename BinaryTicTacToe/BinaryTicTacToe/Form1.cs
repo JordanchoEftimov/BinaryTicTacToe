@@ -28,7 +28,23 @@ namespace BinaryTicTacToe
                 }
             }
         }
-        
+
+        public void disableMenuButtons()
+        {
+            btnPlayWithFriend.Enabled = false;
+            btnPlayPC.Enabled = false;
+            btnScoreboard.Enabled = false;
+            btnExit.Enabled = false;
+        }
+
+        public void enableMenuButtons()
+        {
+            btnPlayWithFriend.Enabled = true;
+            btnPlayPC.Enabled = true;
+            btnScoreboard.Enabled = true;
+            btnExit.Enabled = true;
+        }
+
         /// <summary>
         ///     Code for adding background music
         /// </summary>
@@ -111,6 +127,7 @@ namespace BinaryTicTacToe
             PlayerNames form = new PlayerNames(Game.P1, Game.P2);
             if (form.ShowDialog() == DialogResult.OK)
             {
+                disableMenuButtons();
                 Game.P1 = new Player(form.player1Name);
                 Game.P2 = new Player(form.player2Name);
                 pnlGameWindow.Visible = true;
@@ -118,6 +135,7 @@ namespace BinaryTicTacToe
                 ShowScore();
                 ResetFields();
                 Bot.botActive = false;
+
             }
             else
             {
@@ -139,6 +157,7 @@ namespace BinaryTicTacToe
                 }
                 ResetFields();
                 pnlGameWindow.Visible = false;
+                enableMenuButtons();
             }
         }
 
@@ -291,6 +310,7 @@ namespace BinaryTicTacToe
             Difficulty form = new Difficulty();
             if (form.ShowDialog() == DialogResult.OK)
             {
+                disableMenuButtons();
                 pnlGameWindow.Visible = true;
                 pnlGameScore.Visible = false;
                 ResetFields();

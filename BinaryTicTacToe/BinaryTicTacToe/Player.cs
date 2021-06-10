@@ -58,7 +58,24 @@ namespace BinaryTicTacToe
         public int CompareTo(Player other)
         {
             // To be modified
-            return other.GetPoints().CompareTo(this.GetPoints());
+            int result = other.GetPoints().CompareTo(this.GetPoints());
+            if (result == 0)
+            {
+                result = other.Wins.CompareTo(this.Wins);
+                if(result == 0)
+                {
+                    result = other.Draws.CompareTo(this.Draws);
+                    if (result == 0)
+                    {
+                        result = this.Looses.CompareTo(other.Looses);
+                        if (result == 0)
+                        {
+                            result = this.Name.CompareTo(other.Name);
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         public override bool Equals(Object obj)
