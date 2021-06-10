@@ -12,12 +12,12 @@ namespace BinaryTicTacToe
 {
     public partial class Score : Form
     {
-        public static int totalRecords { get; set; }
+        public static int TotalRecords { get; set; }
         private const int pageSize = 10;
         public Score()
         {
             InitializeComponent();
-            totalRecords = Scoreboard.listPlayer.Count;
+            TotalRecords = Scoreboard.listPlayer.Count;
             bindingNavigator1.BindingSource = bindingSource1;
             bindingSource1.CurrentChanged += new System.EventHandler(BindingSource1_CurrentChanged);
             bindingSource1.DataSource = new PageOffsetList();
@@ -28,7 +28,7 @@ namespace BinaryTicTacToe
             // The desired page has changed, so fetch the page of records using the "Current" offset 
             int offset = (int)bindingSource1.Current;
             List<Player> players = new List<Player>();
-            for (int i = offset; i < offset + pageSize && i < totalRecords; i++)
+            for (int i = offset; i < offset + pageSize && i < TotalRecords; i++)
                 players.Add(Scoreboard.listPlayer[i]);
             dataGridView1.DataSource = players;
         }
@@ -41,7 +41,7 @@ namespace BinaryTicTacToe
             {
                 // Return a list of page offsets based on "totalRecords" and "pageSize"
                 var pageOffsets = new List<int>();
-                for (int offset = 0; offset < totalRecords; offset += pageSize)
+                for (int offset = 0; offset < TotalRecords; offset += pageSize)
                     pageOffsets.Add(offset);
                 return pageOffsets;
             }

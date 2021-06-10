@@ -19,8 +19,7 @@ namespace BinaryTicTacToe
         {
             if (players.Contains(player))
             {
-                Player p;
-                players.TryGetValue(player, out p);
+                players.TryGetValue(player, out Player p);
                 players.Remove(player);
                 p.UpdateStats(player);
                 players.Add(p);
