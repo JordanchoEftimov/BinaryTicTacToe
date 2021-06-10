@@ -17,8 +17,8 @@ namespace BinaryTicTacToe
         {
             InitializeComponent();
         }
-
-        private void backBtn_Click(object sender, EventArgs e)
+        
+        private void BackBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to go back?", "Back to homepage!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
@@ -26,19 +26,19 @@ namespace BinaryTicTacToe
             }
         }
 
-        private void easyBtn_Click(object sender, EventArgs e)
+        private void EasyBtn_Click(object sender, EventArgs e)
         {
             diff = 0;
             DialogResult = DialogResult.OK;
         }
 
-        private void mediumBtn_Click(object sender, EventArgs e)
+        private void MediumBtn_Click(object sender, EventArgs e)
         {
             diff = 1;
             DialogResult = DialogResult.OK;
         }
 
-        private void hardBtn_Click(object sender, EventArgs e)
+        private void HardBtn_Click(object sender, EventArgs e)
         {
             diff = 2;
             DialogResult = DialogResult.OK;

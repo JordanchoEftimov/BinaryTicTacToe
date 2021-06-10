@@ -75,7 +75,7 @@ namespace BinaryTicTacToe
             this.btnPlayWithFriend.TabStop = false;
             this.btnPlayWithFriend.Text = "Play with a friend";
             this.btnPlayWithFriend.UseVisualStyleBackColor = false;
-            this.btnPlayWithFriend.Click += new System.EventHandler(this.btnPlayWithFriend_Click);
+            this.btnPlayWithFriend.Click += new System.EventHandler(this.BtnPlayWithFriend_Click);
             // 
             // btnPlayPC
             // 
@@ -89,7 +89,7 @@ namespace BinaryTicTacToe
             this.btnPlayPC.TabStop = false;
             this.btnPlayPC.Text = "Play with a bot";
             this.btnPlayPC.UseVisualStyleBackColor = false;
-            this.btnPlayPC.Click += new System.EventHandler(this.btnPlayPC_Click);
+            this.btnPlayPC.Click += new System.EventHandler(this.BtnPlayPC_Click);
             // 
             // btnScoreboard
             // 
@@ -103,7 +103,7 @@ namespace BinaryTicTacToe
             this.btnScoreboard.TabStop = false;
             this.btnScoreboard.Text = "Scoreboard";
             this.btnScoreboard.UseVisualStyleBackColor = false;
-            this.btnScoreboard.Click += new System.EventHandler(this.btnScoreboard_Click);
+            this.btnScoreboard.Click += new System.EventHandler(this.BtnScoreboard_Click);
             // 
             // btnExit
             // 
@@ -117,7 +117,7 @@ namespace BinaryTicTacToe
             this.btnExit.TabStop = false;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // pnlTitle
             // 
@@ -179,7 +179,7 @@ namespace BinaryTicTacToe
             this.btnNewGame.TabStop = false;
             this.btnNewGame.Text = "New Game";
             this.btnNewGame.UseVisualStyleBackColor = false;
-            this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
+            this.btnNewGame.Click += new System.EventHandler(this.BtnNewGame_Click);
             // 
             // btnResetRound
             // 
@@ -193,7 +193,7 @@ namespace BinaryTicTacToe
             this.btnResetRound.TabStop = false;
             this.btnResetRound.Text = "Reset";
             this.btnResetRound.UseVisualStyleBackColor = false;
-            this.btnResetRound.Click += new System.EventHandler(this.btnResetRound_Click);
+            this.btnResetRound.Click += new System.EventHandler(this.BtnResetRound_Click);
             // 
             // btnExitGame
             // 
@@ -207,7 +207,7 @@ namespace BinaryTicTacToe
             this.btnExitGame.TabStop = false;
             this.btnExitGame.Text = "Exit Game";
             this.btnExitGame.UseVisualStyleBackColor = false;
-            this.btnExitGame.Click += new System.EventHandler(this.btnExitGame_Click);
+            this.btnExitGame.Click += new System.EventHandler(this.BtnExitGame_Click);
             // 
             // pnlGameButtons
             // 
@@ -237,7 +237,7 @@ namespace BinaryTicTacToe
             this.field9.TabIndex = 100;
             this.field9.TabStop = false;
             this.field9.UseVisualStyleBackColor = false;
-            this.field9.Click += new System.EventHandler(this.field_Click);
+            this.field9.Click += new System.EventHandler(this.Field_Click);
             // 
             // field8
             // 
@@ -250,7 +250,7 @@ namespace BinaryTicTacToe
             this.field8.TabIndex = 100;
             this.field8.TabStop = false;
             this.field8.UseVisualStyleBackColor = false;
-            this.field8.Click += new System.EventHandler(this.field_Click);
+            this.field8.Click += new System.EventHandler(this.Field_Click);
             // 
             // field7
             // 
@@ -263,7 +263,7 @@ namespace BinaryTicTacToe
             this.field7.TabIndex = 100;
             this.field7.TabStop = false;
             this.field7.UseVisualStyleBackColor = false;
-            this.field7.Click += new System.EventHandler(this.field_Click);
+            this.field7.Click += new System.EventHandler(this.Field_Click);
             // 
             // field6
             // 
@@ -276,7 +276,7 @@ namespace BinaryTicTacToe
             this.field6.TabIndex = 100;
             this.field6.TabStop = false;
             this.field6.UseVisualStyleBackColor = false;
-            this.field6.Click += new System.EventHandler(this.field_Click);
+            this.field6.Click += new System.EventHandler(this.Field_Click);
             // 
             // field5
             // 
@@ -289,7 +289,7 @@ namespace BinaryTicTacToe
             this.field5.TabIndex = 100;
             this.field5.TabStop = false;
             this.field5.UseVisualStyleBackColor = false;
-            this.field5.Click += new System.EventHandler(this.field_Click);
+            this.field5.Click += new System.EventHandler(this.Field_Click);
             // 
             // field4
             // 
@@ -302,7 +302,7 @@ namespace BinaryTicTacToe
             this.field4.TabIndex = 100;
             this.field4.TabStop = false;
             this.field4.UseVisualStyleBackColor = false;
-            this.field4.Click += new System.EventHandler(this.field_Click);
+            this.field4.Click += new System.EventHandler(this.Field_Click);
             // 
             // field3
             // 
@@ -315,7 +315,7 @@ namespace BinaryTicTacToe
             this.field3.TabIndex = 100;
             this.field3.TabStop = false;
             this.field3.UseVisualStyleBackColor = false;
-            this.field3.Click += new System.EventHandler(this.field_Click);
+            this.field3.Click += new System.EventHandler(this.Field_Click);
             // 
             // field2
             // 
@@ -328,7 +328,7 @@ namespace BinaryTicTacToe
             this.field2.TabIndex = 100;
             this.field2.TabStop = false;
             this.field2.UseVisualStyleBackColor = false;
-            this.field2.Click += new System.EventHandler(this.field_Click);
+            this.field2.Click += new System.EventHandler(this.Field_Click);
             // 
             // field1
             // 
@@ -341,7 +341,7 @@ namespace BinaryTicTacToe
             this.field1.TabIndex = 100;
             this.field1.TabStop = false;
             this.field1.UseVisualStyleBackColor = false;
-            this.field1.Click += new System.EventHandler(this.field_Click);
+            this.field1.Click += new System.EventHandler(this.Field_Click);
             // 
             // pnlGameScore
             // 

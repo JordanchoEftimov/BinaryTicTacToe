@@ -14,9 +14,11 @@ namespace BinaryTicTacToe
     {
         public string player1Name;
         public string player2Name;
-        public PlayerNames()
+        public PlayerNames(Player p1, Player p2)
         {
             InitializeComponent();
+            textBox1.Text = p1.Name;
+            textBox2.Text = p2.Name;
         }
 
         //function to enable form to be movable without any form border

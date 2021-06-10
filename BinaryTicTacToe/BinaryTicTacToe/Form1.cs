@@ -6,50 +6,52 @@ namespace BinaryTicTacToe
 {
     public partial class Form1 : Form
     {
-        bool is1or0turn = true;
-        byte botDifficulty = 0;
-        bool botActive = false;
-        int turnsTaken = 0;
-        int[] plays;
-        Button[] gameButtons;
+        private Game Game { get; set; }
+        private Button[] GameButtons { get; set; }
+        /// <summary>
+        /// Starts the music.
+        /// Intialize the game and the buttons!
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
-            playBackgroundMusic();
-            plays = new int[9];
-            gameButtons = new Button[9];
+            PlayBackgroundMusic();
+            Game = new Game();
+            GameButtons = new Button[9];
             int i = 8;
             foreach (Control c in pnlGameButtons.Controls)
             {
                 if (c is Button)
                 {
                     Button b = c as Button;
-                    gameButtons[i--] = b; 
+                    GameButtons[i--] = b; 
                 }
             }
         }
-        private void initializePlays()
-        {
-            for (int i = 0; i < 9; i++) {
-                plays[i] = -1;
-            }
-        }
-        //code for adding background music
-        public void playBackgroundMusic()
+        
+        /// <summary>
+        ///     Code for adding background music
+        /// </summary>
+        public void PlayBackgroundMusic()
         {
             SoundPlayer player = new
             SoundPlayer(Properties.Resources.background_music);
             player.PlayLooping();
         }
 
-        //when clicking "Exit" the game should exit
-        private void btnExit_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     When clicking "Exit" the game should exit
+        /// </summary>
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to quit the game?", "Quit the game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 this.Close();
         }
 
-        //function to enable form to be movable without any form border
+        /// <summary>
+        ///     Function to enable form to be movable without any form border
+        /// </summary>
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -63,278 +65,244 @@ namespace BinaryTicTacToe
 
             base.WndProc(ref m);
         }
-        // Field Reset
-        private void resetFields()
+        
+        /// <summary>
+        ///     Restarts the game and fields!
+        /// </summary>
+        private void ResetFields()
         {
-            initializePlays();
-            foreach (Button b in gameButtons)
+            Game.ResetGame();
+            ShowScore();
+            foreach (Button b in GameButtons)
             {
                 b.Text = "";
                 b.Enabled = true;
                 b.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             }
         }
-        // Field Disable
-        private void disableFields()
+
+        /// <summary>
+        ///     Disable fields on game end!
+        /// </summary>
+        private void DisableFields()
         {
-            foreach (Button b in gameButtons)
+            foreach (Button b in GameButtons)
             {
                 b.Enabled = false;
             }
         }
-        // Play with a friend show
-        private void btnPlayWithFriend_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     Show updated scores!
+        /// </summary>
+        private void ShowScore()
         {
-            PlayerNames form = new PlayerNames();
+            lblPlayerName1.Text = Game.P1.Name;
+            lblPlayerName2.Text = Game.P2.Name;
+            lblPlayer1Score.Text = Game.P1.Wins.ToString();
+            lblPlayer2Score.Text = Game.P2.Wins.ToString();
+        }
+
+        /// <summary>
+        ///     Play with a friend actions!
+        /// </summary>
+        private void BtnPlayWithFriend_Click(object sender, EventArgs e)
+        {
+            PlayerNames form = new PlayerNames(Game.P1, Game.P2);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                lblPlayerName1.Text = form.player1Name;
-                lblPlayerName2.Text = form.player2Name;
+                Game.P1 = new Player(form.player1Name);
+                Game.P2 = new Player(form.player2Name);
                 pnlGameWindow.Visible = true;
                 pnlGameScore.Visible = true;
-                resetFields();
-                lblPlayer1Score.Text = "0";
-                lblPlayer2Score.Text = "0";
+                ShowScore();
+                ResetFields();
+                Bot.botActive = false;
             }
             else
             {
                 form.Close();
             }
         }
-        // Close game Code
-        private void btnExitGame_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     GamePlay exit button action!
+        /// </summary>
+        private void BtnExitGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to quit this gameplay?", "Quit the gameplay!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                is1or0turn = true;
-                resetFields();
-                lblPlayer1Score.Text = "0";
-                lblPlayer2Score.Text = "0";
+                ResetFields();
                 pnlGameWindow.Visible = false;
             }
         }
 
-
-        //Reset Button game logic
-        private void btnResetRound_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Game Reset button action!
+        /// </summary>
+        private void BtnResetRound_Click(object sender, EventArgs e)
         {
-            is1or0turn = true;
-            turnsTaken = 0;
-            resetFields();
+            ResetFields();
         }
 
-        // Start new game
-        private void btnNewGame_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     GamePlay New Game button action depending on which one is active!
+        /// </summary>
+        private void BtnNewGame_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to play a new game?", "Play a new game!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                PlayerNames form = new PlayerNames();
-                if (form.ShowDialog() == DialogResult.OK)
+                if (Bot.botActive)
                 {
-                    lblPlayerName1.Text = form.player1Name;
-                    lblPlayerName2.Text = form.player2Name;
-                    is1or0turn = true;
-                    turnsTaken = 0;
-                    resetFields();
-                    lblPlayer1Score.Text = "0";
-                    lblPlayer2Score.Text = "0";
-                }
-                else
+                    BtnPlayPC_Click(sender, e);
+                } else
                 {
-                    form.Close();
+                    BtnPlayWithFriend_Click(sender, e);
                 }
             }
         }
+        
 
-        private void field_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     It updates the clicked cell and marks it as played!
+        /// </summary>
+        private void Field_Click(object sender, EventArgs e)
         {
-            Button field = (Button)sender;
+            // Field and Game Update start
+            Button field = (Button) sender;
             int index = int.Parse(field.Name[5] + "") - 1;
-            if (is1or0turn == true)
+            if (Game.Is1or0turn == true)
             {
-                plays[index] = 1;
+                Game.Plays[index] = 1;
                 field.Text = "1";
             }
             else
             {
-                plays[index] = 0;
+                Game.Plays[index] = 0;
                 field.Text = "0";
             }
-            is1or0turn = !is1or0turn;
+            
             field.Enabled = false;
-            turnsTaken++;
-            if (checkWinner().Equals("none") && botActive)
+            Game.TurnsTaken++;
+            // Field and Game Update end
+
+            String result = WinCheck(index); // Check winner and disable fileds if end
+            Game.Is1or0turn = !Game.Is1or0turn; // Change the turn to next player
+            /*
+             *  The next part is used to make imediately a bot move if the game didn't finished 
+             *  with the last move of the player (depending on the selected mode at the begining).
+             */
+            if (Bot.botActive && result.Equals("None") && Game.TurnsTaken != 9)
             {
-                int ind = -1;
-                switch(botDifficulty)
-                {
-                    case 0: ind = easyMove();
-                        break;
-                    case 1: ind = mediumMove();
-                        break;
-                    case 2: ind = hardMove();
-                        break;
-                }
-                plays[ind] = 0;
-                gameButtons[ind].Enabled = false;
-                gameButtons[ind].Text = "0";
-                turnsTaken++;
-                is1or0turn = !is1or0turn;
-                checkWinner();
+                index = Game.BotMove();
+                GameButtons[index].Text = "0";
+                GameButtons[index].Enabled = false;
+
+                WinCheck(index);
+
+                Game.Is1or0turn = !Game.Is1or0turn;
             }
         }
-        // Winner Check
-        private string checkWinner()
+        /// <summary>
+        ///     Determines the state of the game with the help of CheckWin function from 
+        ///     the helper class WinnerCheck!
+        /// </summary>
+        /// <param name="index">The index of last clicked field</param>
+        /// <returns>None if no one won and Win:win fields indexes if theres a win</returns>
+        private String WinCheck(int index)
         {
-            string winner = "none";
-            if (field1.Text == field2.Text && field2.Text == field3.Text && !field1.Enabled)
+            String result = WinnerCheck.CheckWin(Game.Plays, index, Game.Is1or0turn ? 1 : 0);
+            if (result.StartsWith("Win"))
             {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field2.BackColor = System.Drawing.Color.LimeGreen;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field4.Text == field5.Text && field5.Text == field6.Text && !field6.Enabled)
-            {
-                winner = field4.Text;
-                field4.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field6.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field7.Text == field8.Text && field8.Text == field9.Text && !field9.Enabled)
-            {
-                winner = field7.Text;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-                field8.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field1.Text == field4.Text && field4.Text == field7.Text && !field7.Enabled)
-            {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field4.BackColor = System.Drawing.Color.LimeGreen;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field2.Text == field5.Text && field5.Text == field8.Text && !field8.Enabled)
-            {
-                winner = field2.Text;
-                field2.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field8.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field3.Text == field6.Text && field6.Text == field9.Text && !field9.Enabled)
-            {
-                winner = field3.Text;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-                field6.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field1.Text == field5.Text && field5.Text == field9.Text && !field1.Enabled)
-            {
-                winner = field1.Text;
-                field1.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field9.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            else if (field3.Text == field5.Text && field5.Text == field7.Text && !field3.Enabled)
-            {
-                winner = field3.Text;
-                field3.BackColor = System.Drawing.Color.LimeGreen;
-                field5.BackColor = System.Drawing.Color.LimeGreen;
-                field7.BackColor = System.Drawing.Color.LimeGreen;
-            }
-            if (!winner.Equals("none"))
-            {
-                string player = "";
-                disableFields();
-                if (winner == "1")
-                    player = lblPlayerName1.Text;
-                else
-                    player = lblPlayerName2.Text;
-                MessageBox.Show("Congratulations! " + player + " wins!", "Win!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                turnsTaken = 0;
-                if (winner == "1")
+                ColorWin(result.Substring(4));
+                if (Game.Is1or0turn)
                 {
-                    int score = Int32.Parse(lblPlayer1Score.Text);
-                    score++;
-                    lblPlayer1Score.Text = score.ToString();
-                }
-                else
-                {
-                    int score = Int32.Parse(lblPlayer2Score.Text);
-                    score++;
-                    lblPlayer2Score.Text = score.ToString();
-                }
-            }
-            if (turnsTaken == 9)
-            {
-                MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                winner = "draw";
-                turnsTaken = 0;
-            }
-            return winner;
-        }
-
-
-
-
-        // Bot Section
-        private int easyMove()
-        {
-            Random rand = new Random();
-            while (true)
-            {
-                int ind = rand.Next(9);
-                if (plays[ind] == -1)
-                {
-                    return ind;
-                }
-            }
-        }
-        private int mediumMove()
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                if (plays[i] == -1)
-                {
-                    if (checkWinner().Equals("none"))
+                    EndMessage(Bot.botActive ? "User" : Game.P1.Name);
+                    if (!Bot.botActive)
                     {
-                        plays[i] = -1;
-                    } else
-                    {
-                        plays[i] = -1;
-                        return i;
+                        Game.P1.Wins++;
+                        Game.P2.Looses++;
                     }
                 }
+                else
+                {
+                    EndMessage(Bot.botActive ? "Bot" : Game.P2.Name);
+                    if (!Bot.botActive)
+                    {
+                        Game.P2.Wins++;
+                        Game.P1.Looses++;
+                    }
+                }
+                DisableFields();
+                ShowScore();
             }
-            return easyMove();
+            else if (Game.TurnsTaken == 9) // If 9 moves are made then its a Draw
+            {
+                EndMessage("Draw");
+                DisableFields();
+            }
+            return result;
         }
-        private int hardMove()
-        {
-            // MinMax Algorithm
 
-            return 0;
+        /// <summary>
+        ///     In case of win tis function helps to color the fields of the win!
+        /// </summary>
+        /// <param name="pattern">The field indexs seperated by comma.</param>
+        private void ColorWin(String pattern)
+        {
+            String[] pieces = pattern.Split(',');
+            for (int i = 0; i < 3; i++)
+            {
+                GameButtons[Convert.ToInt32(pieces[i])].BackColor = System.Drawing.Color.LimeGreen;
+            }
         }
-        private void btnPlayPC_Click(object sender, EventArgs e)
+
+        /// <summary>
+        ///     Shows a message box when the game ends.
+        /// </summary>
+        /// <param name="player">The name of the player who won or Draw in case of draw.</param>
+        private void EndMessage(String player)
+        {
+            if (player.Equals("Draw"))
+            {
+                DialogResult = MessageBox.Show("The game ended in a draw!", "Draw!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!Bot.botActive)
+                {
+                    Game.P1.Draws++;
+                    Game.P2.Draws++;
+                }
+            } else
+            {
+                MessageBox.Show("Congratulations! " + player + " wins!", "Win!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+      
+        /// <summary>
+        ///     Opens a form to pick the difficulty of the bot!
+        /// </summary>
+        private void BtnPlayPC_Click(object sender, EventArgs e)
         {
             Difficulty form = new Difficulty();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 pnlGameWindow.Visible = true;
                 pnlGameScore.Visible = false;
-                resetFields();
-                botDifficulty = form.diff;
-                botActive = true;
+                ResetFields();
+                Bot.botActive = true;
+                Bot.botDifficulty = form.diff;
             }
             else
             {
                 form.Close();
             }
         }
-
-        private void btnScoreboard_Click(object sender, EventArgs e)
+        /// <summary>
+        ///     Opens a form where the scoreboard of players will be shown!
+        /// </summary>
+        private void BtnScoreboard_Click(object sender, EventArgs e)
         {
-            
+            /// TODO
         }
 
 

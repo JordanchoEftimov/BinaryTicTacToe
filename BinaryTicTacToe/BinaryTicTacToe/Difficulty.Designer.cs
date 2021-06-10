@@ -48,7 +48,7 @@ namespace BinaryTicTacToe
             this.easyBtn.TabIndex = 9;
             this.easyBtn.Text = "Easy";
             this.easyBtn.UseVisualStyleBackColor = false;
-            this.easyBtn.Click += new System.EventHandler(this.easyBtn_Click);
+            this.easyBtn.Click += new System.EventHandler(this.EasyBtn_Click);
             // 
             // errorProvider1
             // 
@@ -64,7 +64,7 @@ namespace BinaryTicTacToe
             this.mediumBtn.TabIndex = 13;
             this.mediumBtn.Text = "Medium";
             this.mediumBtn.UseVisualStyleBackColor = false;
-            this.mediumBtn.Click += new System.EventHandler(this.mediumBtn_Click);
+            this.mediumBtn.Click += new System.EventHandler(this.MediumBtn_Click);
             // 
             // hardBtn
             // 
@@ -76,7 +76,7 @@ namespace BinaryTicTacToe
             this.hardBtn.TabIndex = 14;
             this.hardBtn.Text = "Hard";
             this.hardBtn.UseVisualStyleBackColor = false;
-            this.hardBtn.Click += new System.EventHandler(this.hardBtn_Click);
+            this.hardBtn.Click += new System.EventHandler(this.HardBtn_Click);
             // 
             // backBtn
             // 
@@ -88,7 +88,7 @@ namespace BinaryTicTacToe
             this.backBtn.TabIndex = 15;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = false;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            this.backBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // Difficulty
             // 
