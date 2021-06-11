@@ -71,7 +71,7 @@ namespace BinaryTicTacToe
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // textBox1
             // 
@@ -80,7 +80,7 @@ namespace BinaryTicTacToe
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(130, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox1_Validating);
             // 
             // textBox2
             // 
@@ -89,7 +89,7 @@ namespace BinaryTicTacToe
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(130, 20);
             this.textBox2.TabIndex = 4;
-            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
+            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.TextBox2_Validating);
             // 
             // lblTitle
             // 
@@ -117,7 +117,7 @@ namespace BinaryTicTacToe
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // PlayerNames
             // 

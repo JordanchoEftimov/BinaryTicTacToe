@@ -35,8 +35,7 @@ namespace BinaryTicTacToe
 
             base.WndProc(ref m);
         }
-
-        private void textBox1_Validating(object sender, CancelEventArgs e)
+        private void TextBox1_Validating(object sender, CancelEventArgs e)
         {
             if (textBox1.Text.Length == 0)
             {
@@ -50,7 +49,7 @@ namespace BinaryTicTacToe
             }
         }
 
-        private void textBox2_Validating(object sender, CancelEventArgs e)
+        private void TextBox2_Validating(object sender, CancelEventArgs e)
         {
             if (textBox2.Text.Length == 0)
             {
@@ -64,7 +63,7 @@ namespace BinaryTicTacToe
             }
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Length != 0 && textBox2.Text.Length != 0)
             {
@@ -76,7 +75,7 @@ namespace BinaryTicTacToe
                 MessageBox.Show("Please insert your name in the following fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }

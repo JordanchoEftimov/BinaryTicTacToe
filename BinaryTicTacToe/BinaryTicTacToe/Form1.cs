@@ -34,7 +34,7 @@ namespace BinaryTicTacToe
             }
         }
 
-        public void disableMenuButtons()
+        public void DisableMenuButtons()
         {
             btnPlayWithFriend.Enabled = false;
             btnPlayPC.Enabled = false;
@@ -42,7 +42,7 @@ namespace BinaryTicTacToe
             btnExit.Enabled = false;
         }
 
-        public void enableMenuButtons()
+        public void EnableMenuButtons()
         {
             btnPlayWithFriend.Enabled = true;
             btnPlayPC.Enabled = true;
@@ -132,7 +132,7 @@ namespace BinaryTicTacToe
             PlayerNames form = new PlayerNames(Game.P1, Game.P2);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                disableMenuButtons();
+                DisableMenuButtons();
                 Game.P1 = new Player(form.player1Name);
                 Game.P2 = new Player(form.player2Name);
                 pnlGameWindow.Visible = true;
@@ -162,7 +162,7 @@ namespace BinaryTicTacToe
                 }
                 ResetFields();
                 pnlGameWindow.Visible = false;
-                enableMenuButtons();
+                EnableMenuButtons();
             }
         }
 
@@ -264,7 +264,8 @@ namespace BinaryTicTacToe
                     }
                 }
                 DisableFields();
-                ShowScore();
+                if (!Bot.botActive)
+                    ShowScore();
             }
             else if (Game.TurnsTaken == 9) // If 9 moves are made then its a Draw
             {
@@ -315,7 +316,7 @@ namespace BinaryTicTacToe
             Difficulty form = new Difficulty();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                disableMenuButtons();
+                DisableMenuButtons();
                 pnlGameWindow.Visible = true;
                 pnlGameScore.Visible = false;
                 ResetFields();
@@ -372,6 +373,7 @@ namespace BinaryTicTacToe
             string fileName = GetDataFolder() + @"\scores.dat";
             if (!File.Exists(fileName))
             {
+                Console.WriteLine("Hi");
                 Save();
             }
             LoadData(fileName);
