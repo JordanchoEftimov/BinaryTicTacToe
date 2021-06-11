@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
+using System.Collections.Generic;
 
 namespace BinaryTicTacToe
 {
@@ -330,7 +335,46 @@ namespace BinaryTicTacToe
             Score scoreboard = new Score();
             scoreboard.Show();
         }
-
-
+        // Gets the base folder of the app
+        private static string GetDataFolder()
+        {
+            return new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName.Replace("\\bin\\Debug", "\\data");
+        }
+        private void Save()
+        {
+            string currentFolder = GetDataFolder();
+            if (!Directory.Exists(currentFolder))
+            {
+                Directory.CreateDirectory(currentFolder);
+            }
+            // path where the data should be saved
+            string fileName = currentFolder + @"\scores.dat";
+            using (FileStream fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                IFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fileStream, Scoreboard.listPlayer);
+            }
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Save();
+        }
+        private void LoadData(string path)
+        {
+            using (FileStream fileStream = new FileStream(path, FileMode.Open))
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Scoreboard.listPlayer = (List<Player>)formatter.Deserialize(fileStream);
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string fileName = GetDataFolder() + @"\scores.dat";
+            if (!File.Exists(fileName))
+            {
+                Save();
+            }
+            LoadData(fileName);
+        }
     }
 }
