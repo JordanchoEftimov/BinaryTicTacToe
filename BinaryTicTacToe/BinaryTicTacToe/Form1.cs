@@ -188,6 +188,8 @@ namespace BinaryTicTacToe
                 } else
                 {
                     BtnPlayWithFriend_Click(sender, e);
+                    Scoreboard.AddStats(Game.P1);
+                    Scoreboard.AddStats(Game.P2);
                 }
             }
         }
